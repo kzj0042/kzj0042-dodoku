@@ -27,9 +27,14 @@ class CreateTest(TestCase):
             actualResult = create._create(parms)
             self.assertDictEqual(expectedResult, actualResult)  
         
-        def test_006_shouldCreateSha256Hash(self):
+        def test_006_shouldCreateSha256HashLevel1(self):
             expectedResult = 'a545fadd'
             actualResult = create.calculateHash('1')
+            self.assertEqual(expectedResult, actualResult)
+            
+        def test_007_shouldCreateSha256HashLevel2(self):
+            expectedResult = '35ac31f7'
+            actualResult = create.calculateHash('2')
             self.assertEqual(expectedResult, actualResult)
             
          #sad path tests   
