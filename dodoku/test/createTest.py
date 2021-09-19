@@ -2,6 +2,7 @@ from unittest import TestCase
 import dodoku.create as create 
 
 class CreateTest(TestCase):
+        #happy path tests
         def test_002_ShouldCreateLevel1Grid(self):
             expectedResult = {"grid":[0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,0,-6,0,0,-3,0,0,0,0,-4,0,-5,-7,0,0,0,0,0,0,-6,-2,0,0,-7,0,-9,0,-5,0,-4,0,0,0,-6,0], 'status':'ok'}
             parms={'op':'create', 'level':'1'}
@@ -25,14 +26,20 @@ class CreateTest(TestCase):
             parms={'op':'create', 'level':''}
             actualResult = create._create(parms)
             self.assertDictEqual(expectedResult, actualResult)  
+        
+        def test_006_shouldCreateSha256Hash(self):
+            expectedResult = 'a545fadd'
+            actualResult = create.calculateHash('1')
+            self.assertEqual(expectedResult, actualResult)
             
+         #sad path tests   
         def test_101_ShouldCauseErrorInvalidLevel(self):
             expectedResult = {'status':'error: invalid level'}
             parms={'op':'create', 'level':'a'}
             actualResult = create._create(parms)
             self.assertDictEqual(expectedResult, actualResult)
             
-        def test_101_ShouldCauseErrorNoLevelGiven(self):
+        def test_102_ShouldCauseErrorNoLevelGiven(self):
             expectedResult = {'status':'error: invalid level'}
             parms = {'op':'create'}
             actualResult = create._create(parms)
