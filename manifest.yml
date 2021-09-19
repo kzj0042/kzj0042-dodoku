@@ -3,7 +3,7 @@ applications:
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  name: aulogin-dsudoku 
-  host: aulogin-dsudoku
+  name: kzj0042-dodoku 
+  host: kzj0042-dodoku
   disk_quota: 1024M
   buildpack: python_buildpack  
