@@ -37,6 +37,11 @@ class CreateTest(TestCase):
             actualResult = create.calculateHash('2')
             self.assertEqual(expectedResult, actualResult)
             
+        def test_008_shouldCreateSha256HashLevel3(self):
+            expectedResult = '430ad6fd'
+            actualResult = create.calculateHash('3')
+            self.assertEqual(expectedResult, actualResult)
+            
          #sad path tests   
         def test_101_ShouldCauseErrorInvalidLevel(self):
             expectedResult = {'status':'error: invalid level'}
