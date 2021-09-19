@@ -1,5 +1,5 @@
 def _create(parms):
-    if(parms['level'] not in parms):
+    if('level' not in parms):
         result = {'status':'error: invalid level'}
     else:
         if(parms['level'] == '2'):
