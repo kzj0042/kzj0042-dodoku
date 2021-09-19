@@ -19,3 +19,9 @@ class CreateTest(TestCase):
             parms={'op':'create&level=3'}
             actualResult = create._create(parms)
             self.assertDictEqual(expectedResult, actualResult)
+            
+        def test_101_ShouldCauseErrorInvalidLevel(self):
+            expectedResult = {'status':'error: invalid level'}
+            parms = {'op':'create&level=a'}
+            actualResult = create._create(parms)
+            self.assertDictEqual(expectedResult, actualResult)
