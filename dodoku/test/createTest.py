@@ -38,9 +38,9 @@ class CreateTest(TestCase):
             self.assertIn(actualResult, expectedResult)
 
         def test_008_shouldCreateSha256HashLevel3(self):
-            expectedResult = '430ad6fd'
+            expectedResult = 'eb572835ffe2015c731057f94d46fa77430ad6fd332abb0d7dd39d5f2ccadea9'
             actualResult = create.calculateHash('3')
-            self.assertEqual(expectedResult, actualResult)
+            self.assertIn(actualResult, expectedResult)
             
          #sad path tests   
         def test_101_ShouldCauseErrorInvalidLevel(self):
