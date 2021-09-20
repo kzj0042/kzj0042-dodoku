@@ -77,11 +77,24 @@ class CreateTest(TestCase):
             actualResult = create.calculateHash('3')
             self.assertIn(actualResult, expectedResult)
             
-        def test_009_ShouldCauseErrorNoLevelGiven(self):
+        def test_009_ShouldCreateLevelWithNoLevelParameter(self):
             expectedGrid = {"grid":[0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,0,-6,0,0,-3,0,0,0,0,-4,0,-5,-7,0,0,0,0,0,0,-6,-2,0,0,-7,0,-9,0,-5,0,-4,0,0,0,-6,0]}
             expectedStatus = {'status':'ok'}
             expectedHash = '5a3f0c31993d46bcb2ab5f3e8318e734231ee8bdb26cba545fadd7b1732888cd'
             parms={'op':'create'}
+            actualResult = create._create(parms)
+            actualGrid = {'grid':actualResult['grid']}
+            actualStatus = {'status':actualResult['status']}
+            actualHash = actualResult['integrity']
+            self.assertDictEqual(expectedGrid, actualGrid)
+            self.assertDictEqual(expectedStatus, actualStatus)
+            self.assertIn(actualHash, expectedHash)
+            
+        def test_010_ShouldCreateLevelWithCapitalLevel(self):
+            expectedGrid = {"grid":[0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,0,-6,0,0,-3,0,0,0,0,-4,0,-5,-7,0,0,0,0,0,0,-6,-2,0,0,-7,0,-9,0,-5,0,-4,0,0,0,-6,0]}
+            expectedStatus = {'status':'ok'}
+            expectedHash = '5a3f0c31993d46bcb2ab5f3e8318e734231ee8bdb26cba545fadd7b1732888cd'
+            parms={'op':'create', 'LeVeL':'1'}
             actualResult = create._create(parms)
             actualGrid = {'grid':actualResult['grid']}
             actualStatus = {'status':actualResult['status']}
