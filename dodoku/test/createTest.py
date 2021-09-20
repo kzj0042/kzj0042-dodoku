@@ -33,10 +33,10 @@ class CreateTest(TestCase):
             self.assertIn(actualResult, expectedResult)
             
         def test_007_shouldCreateSha256HashLevel2(self):
-            expectedResult = '35ac31f7'
+            expectedResult = '6fcd71ef7722e7573d2f607a35cfa48f72b03c4cea135ac31f7ef73a58e50a8a'
             actualResult = create.calculateHash('2')
-            self.assertEqual(expectedResult, actualResult)
-            
+            self.assertIn(actualResult, expectedResult)
+
         def test_008_shouldCreateSha256HashLevel3(self):
             expectedResult = '430ad6fd'
             actualResult = create.calculateHash('3')
