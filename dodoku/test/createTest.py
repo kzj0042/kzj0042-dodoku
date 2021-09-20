@@ -3,6 +3,13 @@ import dodoku.create as create
 
 class CreateTest(TestCase):
         #happy path tests
+        def test_001_ShouldCreateKeys(self):
+            parms={'op':'create', 'level':'1'}
+            actualResult = create._create(parms)
+            self.assertIn('grid', actualResult.keys())
+            self.assertIn('status', actualResult.keys())
+            self.assertIn('integrity', actualResult.keys())
+            
         def test_002_ShouldCreateLevel1Grid(self):
             expectedGrid = {"grid":[0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,0,-6,0,0,-3,0,0,0,0,-4,0,-5,-7,0,0,0,0,0,0,-6,-2,0,0,-7,0,-9,0,-5,0,-4,0,0,0,-6,0]}
             expectedStatus = {'status':'ok'}
@@ -12,9 +19,6 @@ class CreateTest(TestCase):
             actualGrid = {'grid':actualResult['grid']}
             actualStatus = {'status':actualResult['status']}
             actualHash = actualResult['integrity']
-            self.assertIn('grid', actualResult.keys())
-            self.assertIn('status', actualResult.keys())
-            self.assertIn('integrity', actualResult.keys())
             self.assertDictEqual(expectedGrid, actualGrid)
             self.assertDictEqual(expectedStatus, actualStatus)
             self.assertIn(actualHash, expectedHash)
