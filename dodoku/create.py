@@ -1,6 +1,7 @@
 import hashlib
 import random
 def _create(parms):
+    parms = {key.lower(): value for key, value in parms.items()}
     if 'level' not in parms or parms['level'] == '1' or parms['level'] == '':
         result = {"grid":[0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,0,-6,0,0,-3,0,0,0,0,-4,0,-5,-7,0,0,0,0,0,0,-6,-2,0,0,-7,0,-9,0,-5,0,-4,0,0,0,-6,0], 'status':'ok', 'integrity':str(calculateHash('1'))}
     elif parms['level'] == '2':
