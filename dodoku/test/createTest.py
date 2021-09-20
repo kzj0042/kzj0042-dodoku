@@ -28,9 +28,9 @@ class CreateTest(TestCase):
             self.assertDictEqual(expectedResult, actualResult)  
         
         def test_006_shouldCreateSha256HashLevel1(self):
-            expectedResult = 'a545fadd'
+            expectedResult = '5a3f0c31993d46bcb2ab5f3e8318e734231ee8bdb26cba545fadd7b1732888cd'
             actualResult = create.calculateHash('1')
-            self.assertEqual(expectedResult, actualResult)
+            self.assertIn(actualResult, expectedResult)
             
         def test_007_shouldCreateSha256HashLevel2(self):
             expectedResult = '35ac31f7'
@@ -66,3 +66,4 @@ class CreateTest(TestCase):
             parms = {'op':'create', 'level':'0'}
             actualResult = create._create(parms)
             self.assertDictEqual(expectedResult, actualResult)
+            

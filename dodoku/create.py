@@ -1,5 +1,5 @@
 import hashlib
-
+import random
 def _create(parms):
     if('level' not in parms):
         result = {'status':'error: invalid level'}
@@ -18,6 +18,7 @@ def calculateHash(str):
     if str == '2':
         hashobj = hashlib.sha256(b"0-900000-80-6-30-50-800-900000-10-400-4000-20000-80-100-70000-70-600-1000-300000000-500-6-500-4-900000-7-800-1-900-600000000-2000-700-40-10000-500-10-90000-9000-800-60-500000-500-30-90-6-70-200000-10")
         hashStr = hashobj.hexdigest()
+        randomNum = random.randrange(len(hashStr))
         return hashStr[43:51]
     elif str == '3':
         hashobj = hashlib.sha256(b"0000-90000000-50-800000-9-20-3-1000-4-70-50-2-60-600-70-400-50-9-50-20-8-4000-1-80-70000-20000000-90-2000-90-40000000-40000-80-3-7000-8-10-70-3-40-300-50-800-60-7-60-10-5-2000-3-10-6-900000-20-50000000-30000")
