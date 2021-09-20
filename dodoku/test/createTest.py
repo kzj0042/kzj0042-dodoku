@@ -24,11 +24,18 @@ class CreateTest(TestCase):
             self.assertIn(actualHash, expectedHash)
             
         def test_003_ShouldCreateLevel2Grid(self):
-            expectedResult = {"grid":[0,-6,0,0,0,0,0,-5,-9,-9,-3,0,-4,-8,0,0,0,0,0,0,0,0,0,-7,-3,0,0,0,-5,0,0,-1,0,0,-4,-6,0,0,0,0,0,-6,0,-9,0,0,-8,-1,-2,0,0,0,0,0,0,0,0,0,-7,0,0,0,0,-8,0,-4,0,0,-1,0,0,0,0,-9,0,0,0,0,0,0,0,0,0,0,0,-7,0,-5,-8,0,0,0,-2,0,0,0,-6,-1,0], 'status':'ok', 'integrity':'35ac31f7'}
+            expectedGrid = {"grid":[0,-6,0,0,0,0,0,-5,-9,-9,-3,0,-4,-8,0,0,0,0,0,0,0,0,0,-7,-3,0,0,0,-5,0,0,-1,0,0,-4,-6,0,0,0,0,0,-6,0,-9,0,0,-8,-1,-2,0,0,0,0,0,0,0,0,0,-7,0,0,0,0,-8,0,-4,0,0,-1,0,0,0,0,-9,0,0,0,0,0,0,0,0,0,0,0,-7,0,-5,-8,0,0,0,-2,0,0,0,-6,-1,0]}
+            expectedStatus = {'status':'ok'}
+            expectedHash = '6fcd71ef7722e7573d2f607a35cfa48f72b03c4cea135ac31f7ef73a58e50a8a'
             parms={'op':'create', 'level':'2'}
             actualResult = create._create(parms)
-            self.assertDictEqual(expectedResult, actualResult)
-            
+            actualGrid = {'grid':actualResult['grid']}
+            actualStatus = {'status':actualResult['status']}
+            actualHash = actualResult['integrity']
+            self.assertDictEqual(expectedGrid, actualGrid)
+            self.assertDictEqual(expectedStatus, actualStatus)
+            self.assertIn(actualHash, expectedHash)
+                        
         def test_004_ShouldCreateLevel3Grid(self):
             expectedResult = {"grid":[0,0,0,0,-6,0,0,0,0,0,0,0,-4,0,-9,0,0,0,0,0,-9,-7,0,-5,-1,0,0,0,-5,-2,0,-7,0,-8,-9,0,-9,0,0,-5,0,-2,0,0,-4,0,-8,-3,0,-4,0,-7,-2,0,0,0,-1,-2,0,-8,0,0,0,0,0,0,-6,0,-4,0,0,0,0,0,0,0,-5,0,0,0,0,0,-9,-8,-2,0,0,0,-4,-3,0,0,-7,0,0,0,0,0,0], 'status':'ok', 'integrity':'430ad6fd'}
             parms={'op':'create', 'level':'3'}
