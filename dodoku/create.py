@@ -18,6 +18,5 @@ def calculateHash(str):
         hashobj = hashlib.sha256(b"0000-90000000-50-800000-9-20-3-1000-4-70-50-2-60-600-70-400-50-9-50-20-8-4000-1-80-70000-20000000-90-2000-90-40000000-40000-80-3-7000-8-10-70-3-40-300-50-800-60-7-60-10-5-2000-3-10-6-900000-20-50000000-30000")
     else:                                                                
         hashobj = hashlib.sha256(b"0-800-50-200-200-30000-40-100-900-600-90000-60-5-10-300000-70000000-30000-40-20000-2-70-40-40-100-8000000-50-60-50-6-70000-60-90000-200000-60-100000-90-5-40-70000-300-100-400-90-600-90000-30-9-50-8000-1")
-    hashStr = hashobj.hexdigest()
-    randomNum = random.randrange(len(hashStr)-8)
-    return hashStr[randomNum:randomNum+8]
+    randomNumber = random.randrange(len(hashobj.hexdigest())-8)
+    return hashobj.hexdigest()[randomNumber:randomNumber+8]
