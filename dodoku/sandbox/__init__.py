@@ -60,17 +60,15 @@ def calculateHash(str):
 diction = {}
 i = 0
 
-while True and i<100000:
+for i in range(0, 5700):
     value = calculateHash('1')
     if value not in diction:
         diction[value] = 1
     else:
         diction[value]+=1
-    if str(value) == "732888dc":
-        break
-    i+=1
     
 print(value)
         
 for key, value in diction.items():
-    print("Key: " + str(key) + ":"+"Value: "+str(value/57))
+    print("Key: " + str(key) + ":"+"Value: "+str(value/5700))
+print(len(diction))
