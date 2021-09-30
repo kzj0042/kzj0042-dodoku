@@ -1,3 +1,3 @@
 def _info(parms):
-    result = {'info': 'kzj0042'}
+    result = {'user': 'kzj0042'}
     return result
