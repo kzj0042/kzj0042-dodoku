@@ -53,13 +53,11 @@ def _insert(parms):
         if value in map(abs, rows[rowNum-1]):
             status = 'warning'
         rows[rowNum-1][colNum-7] = value
-    print(rows[rowNum-1][colNum-1])       
+        
     grid = []
     for row in rows:
         for col in row:
             grid.append(col)
-            
-    print(grid)  
-    print(status)    
+               
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':status}
     return result
