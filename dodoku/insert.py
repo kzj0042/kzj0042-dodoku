@@ -8,6 +8,7 @@ def _insert(parms):
     return result
 
 def calculateHash(grid):  
+    print("here")
     stringDictionary = {new_list: "" for new_list in range(15)}
     j=0
     i=0
