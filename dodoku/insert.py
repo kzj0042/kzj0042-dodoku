@@ -40,12 +40,8 @@ def _insert(parms):
         rows.append(row)
     
     if rowNum <=9:
-        if rows[rowNum-1][colNum-1] != 0:
-            status = 'warning'
         rows[rowNum-1][colNum-1] = int(parms['value'])
     else:
-        if rows[rowNum-1][colNum-7] != 0:
-            status = 'warning'
         rows[rowNum-1][colNum-7] = int(parms['value'])
             
     grid = []
