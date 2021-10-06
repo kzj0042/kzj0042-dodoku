@@ -8,6 +8,12 @@ def _insert(parms):
     colNum = int(rowColSplit[1])
     status = 'ok'
     
+    value = int(parms['value'])
+    
+    colMajorOrder = create.convertToColMajorOrder(grid)
+    if str(value) in colMajorOrder[colNum-1]:
+        status = 'warning' 
+    
     rows = []
     for i in range(0, 6):
         row = []
@@ -38,9 +44,7 @@ def _insert(parms):
         for j in range(0, 9):
             row.append(grid[i*9+j])
         rows.append(row)
-    
-    value = int(parms['value'])
-    
+        
     if rowNum <=9:
         if value in rows[rowNum-1]:
             status = 'warning'
@@ -57,6 +61,7 @@ def _insert(parms):
     
     colMajorOrder = create.convertToColMajorOrder(grid)
     if str(value) in colMajorOrder[colNum-1]:
+        print(colMajorOrder[colNum-1])
         print(str(value))
         status = 'warning'   
         
