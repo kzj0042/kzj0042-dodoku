@@ -112,11 +112,11 @@ def _insert(parms):
                     status = 'warning'   
 
     if rowNum <=9:
-        if value in map(abs,rows[rowNum-1]) and value!=0:
+        if value in map(abs,rows[rowNum-1]) and value>0:
             status = 'warning'
         rows[rowNum-1][colNum-1] = value
     else:
-        if value in map(abs, rows[rowNum-1]) and value!=0:
+        if value in map(abs, rows[rowNum-1]) and value>0:
             status = 'warning'
         rows[rowNum-1][colNum-7] = value
         
