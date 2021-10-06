@@ -204,4 +204,5 @@ class InsertTest(TestCase):
             parms = {'op':'insert', 'cell':'r10c1', 'value':'1', 'grid':grid, 'integrity':create.calculateHash(grid)}
             expectedResult = {'status':'error: invalid cell'}
             actualResult = parms['status']
+            
             self.assertDictEqual(expectedResult, actualResult)                    
