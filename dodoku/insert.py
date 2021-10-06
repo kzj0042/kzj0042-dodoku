@@ -76,6 +76,7 @@ def _insert(parms):
             if value in map(abs, subGraphs[7]):
                 status = 'warning'
         elif colNum<=9:
+            print(subGraphs[8])
             if value in map(abs, subGraphs[8]):
                 status = 'warning'
         elif colNum<=12:
