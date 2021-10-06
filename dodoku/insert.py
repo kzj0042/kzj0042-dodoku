@@ -6,6 +6,7 @@ def _insert(parms):
     rowColSplit = rowColNum.split('c')
     rowNum = int(rowColSplit[0][1:])
     colNum = int(rowColSplit[1])
+    print(rowNum + colNum)
     rows = []
     for i in range(0, 6):
         row = []
