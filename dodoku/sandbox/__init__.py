@@ -400,7 +400,6 @@ for i in range(0, 3):
         graph.append(newTest[i][j])
 print(graph)
 graph = []
-print("\n")
 
 for i in range(3, 6):
     for j in range(0, 3):
@@ -418,7 +417,6 @@ for i in range(3, 6):
 print(graph)
 graph = []
 
-print("\n")
 graph = []
 
 for i in range(6, 9):
@@ -446,7 +444,6 @@ for i in range(6, 9):
         graph.append(newTest[i][j])
 print(graph)
 graph = []
-print("\n")
 
 for i in range(9, 12):
     for j in range(0, 3):
@@ -464,7 +461,6 @@ for i in range(9, 12):
 print(graph)
 graph = []
 
-print("\n")
 
 for i in range(12, 15):
     for j in range(0, 3):
@@ -482,7 +478,6 @@ for i in range(12, 15):
 print(graph)
 graph = []
 
-print("\n")
 
 
        

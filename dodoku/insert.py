@@ -44,6 +44,9 @@ def _insert(parms):
         for j in range(0, 9):
             row.append(grid[i*9+j])
         rows.append(row)
+    
+    subGraphs = createSubGraphs(rows)
+    print(subGraphs)
         
     if rowNum <=9:
         if value in map(abs,rows[rowNum-1]):
@@ -61,3 +64,100 @@ def _insert(parms):
                
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':status}
     return result
+
+def createSubGraphs(rows):
+    graph = []
+    subGraphs = []
+    for i in range(0, 3):
+        for j in range(0, 3):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(0, 3):
+        for j in range(3, 6):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(0, 3):
+        for j in range(6, 9):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    
+    for i in range(3, 6):
+        for j in range(0, 3):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(3, 6):
+        for j in range(3, 6):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(3, 6):
+        for j in range(6, 9):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    
+    graph = []
+    
+    for i in range(6, 9):
+        for j in range(0, 3):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(6, 9):
+        for j in range(3, 6):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(6, 9):
+        for j in range(6, 9):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(6, 9):
+        for j in range(9, 12):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(6, 9):
+        for j in range(12, 15):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    
+    for i in range(9, 12):
+        for j in range(0, 3):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(9, 12):
+        for j in range(3, 6):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(9, 12):
+        for j in range(6, 9):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    
+    
+    for i in range(12, 15):
+        for j in range(0, 3):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(12, 15):
+        for j in range(3, 6):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    graph = []
+    for i in range(12, 15):
+        for j in range(6, 9):
+            graph.append(rows[i][j])
+    subGraphs.append(graph)
+    print(subGraphs)
+    return subGraphs
