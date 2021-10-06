@@ -47,6 +47,8 @@ def _insert(parms):
         for j in range(0, 9):
             row.append(grid[i*9+j])
         rows.append(row)
+        
+    print(status)
 
     if value>0:
         subGraphs = createSubGraphs(rows)
