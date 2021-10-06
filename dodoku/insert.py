@@ -42,13 +42,12 @@ def _insert(parms):
         rows[rowNum-1][colNum-1] = parms['value']
     else:
         rows[rowNum-1][colNum-7] = parms['value']
-        
-    print(rows[rowNum-1][colNum-1])    
-    
+            
     grid = []
     for row in rows:
         for col in row:
             grid.append(col)
         
+    print(grid)
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':'ok'}
     return result
