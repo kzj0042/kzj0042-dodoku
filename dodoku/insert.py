@@ -123,6 +123,8 @@ def _insert(parms):
             grid.append(col)
                
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':status}
+    print(status)
+
     return result
 
 def createSubGraphs(rows):
