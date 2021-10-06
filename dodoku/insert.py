@@ -39,15 +39,25 @@ def _insert(parms):
             row.append(grid[i*9+j])
         rows.append(row)
     
+    value = int(parms['value'])
+    
     if rowNum <=9:
-        rows[rowNum-1][colNum-1] = int(parms['value'])
+        if value in rows[rowNum-1]:
+            status = 'warning'
+        rows[rowNum-1][colNum-1] = value
     else:
-        rows[rowNum-1][colNum-7] = int(parms['value'])
+        if value in rows[rowNum-1]:
+            status = 'warning'
+        rows[rowNum-1][colNum-7] = value
             
     grid = []
     for row in rows:
         for col in row:
             grid.append(col)
+    
+    colMajorOrder = create.convertToColMajorOrder(grid)
+    if value in colMajorOrder[colNum-1]:
+        status = 'warning'   
         
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':status}
     return result

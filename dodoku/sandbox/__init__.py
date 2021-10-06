@@ -203,8 +203,9 @@ def calchash2(grid):
             i=147
         if j==15:
             j=9         
+    col = 10
     for i in range(0, len(stringDictionary)):
-        print(str(i+1) + ": "+ stringDictionary[i])
+        print(stringDictionary[col-1])
     hashobj = hashlib.sha256(("".join(value for value in stringDictionary.values())).encode())
     print(("".join(value for value in stringDictionary.values())))
     randomNumber = random.randrange(len(hashobj.hexdigest())-7)

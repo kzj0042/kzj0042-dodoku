@@ -20,7 +20,7 @@ def _create(parms):
         result = {'status':'error: invalid level'}
     return result
 
-def calculateHash(grid):  
+def convertToColMajorOrder(grid):
     stringDictionary = {new_list: "" for new_list in range(15)}
     j=0
     i=0
@@ -80,7 +80,10 @@ def calculateHash(grid):
         elif i==144:
             i=147
         if j==15:
-            j=9           
+            j=9               
+
+def calculateHash(grid):  
+    stringDictionary = convertToColMajorOrder(grid)
     hashobj = hashlib.sha256(("".join(value for value in stringDictionary.values())).encode())
     randomNumber = random.randrange(len(hashobj.hexdigest())-7)
 
