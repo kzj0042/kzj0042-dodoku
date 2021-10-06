@@ -48,7 +48,7 @@ def _insert(parms):
             row.append(grid[i*9+j])
         rows.append(row)
 
-    if(str(value))>0:
+    if value>0:
         subGraphs = createSubGraphs(rows)
         if rowNum<=3:
             if colNum<=3:
@@ -112,11 +112,11 @@ def _insert(parms):
                     status = 'warning'   
 
     if rowNum <=9:
-        if value in map(abs,rows[rowNum-1]) and str(value)!=0:
+        if value in map(abs,rows[rowNum-1]) and value!=0:
             status = 'warning'
         rows[rowNum-1][colNum-1] = value
     else:
-        if value in map(abs, rows[rowNum-1]) and str(value)!=0:
+        if value in map(abs, rows[rowNum-1]) and value!=0:
             status = 'warning'
         rows[rowNum-1][colNum-7] = value
         
