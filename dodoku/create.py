@@ -83,4 +83,5 @@ def calculateHash(grid):
             j=9           
     hashobj = hashlib.sha256(("".join(value for value in stringDictionary.values())).encode())
     randomNumber = random.randrange(len(hashobj.hexdigest())-7)
-    return hashobj
+
+    return hashobj.hexdigest()[randomNumber:randomNumber+8]
