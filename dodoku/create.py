@@ -81,6 +81,7 @@ def convertToColMajorOrder(grid):
             i=147
         if j==15:
             j=9               
+    return stringDictionary
 
 def calculateHash(grid):  
     stringDictionary = convertToColMajorOrder(grid)
