@@ -20,12 +20,67 @@ def _create(parms):
         result = {'status':'error: invalid level'}
     return result
 
-def calculateHash(level):
-    if level == '2':
-        hashobj = hashlib.sha256(b"0-900000-80-6-30-50-800-900000-10-400-4000-20000-80-100-70000-70-600-1000-300000000-500-6-500-4-900000-7-800-1-900-600000000-2000-700-40-10000-500-10-90000-9000-800-60-500000-500-30-90-6-70-200000-10")
-    elif level == '3':
-        hashobj = hashlib.sha256(b"0000-90000000-50-800000-9-20-3-1000-4-70-50-2-60-600-70-400-50-9-50-20-8-4000-1-80-70000-20000000-90-2000-90-40000000-40000-80-3-7000-8-10-70-3-40-300-50-800-60-7-60-10-5-2000-3-10-6-900000-20-50000000-30000")
-    else:                                                                
-        hashobj = hashlib.sha256(b"0-800-50-200-200-30000-40-100-900-600-90000-60-5-10-300000-70000000-30000-40-20000-2-70-40-40-100-8000000-50-60-50-6-70000-60-90000-200000-60-100000-90-5-40-70000-300-100-400-90-600-90000-30-9-50-8000-1")
+def calchash2(grid):  
+    stringDictionary = {new_list: "" for new_list in range(15)}
+    j=0
+    i=0
+    while i<54:
+        stringDictionary[j]+=str(grid[i])
+        j+=1
+        i+=1
+        if j==9:
+            j=0
+    j=0
+    while i<93:
+        stringDictionary[j]+=str(grid[i])
+        j+=1
+        i+=1
+        if i == 63:
+            i=69
+        elif i == 78:
+            i=84
+        if j==9:
+            j=0
+    i=99
+    j=6
+    while i<147:
+        stringDictionary[j]+=str(grid[i])
+        i+=1
+        j+=1
+        if i%3 == 0:
+            i+=6
+        if j == 9:
+            j=6
+    i=63
+    j=9
+    while i<99:
+        stringDictionary[j]+=str(grid[i])
+        i+=1
+        j+=1
+        if i == 69:
+            i=78
+        elif i == 84:
+            i=93
+        if j==15:
+            j=9
+    i=102
+    j=9
+    while i<153:
+        stringDictionary[j]+=str(grid[i])
+        i+=1
+        j+=1
+        if i==108:
+            i=111
+        elif i==117:
+            i=120
+        elif i==126:
+            i=129
+        elif i==135:
+            i=138
+        elif i==144:
+            i=147
+        if j==15:
+            j=9           
+    hashobj = hashlib.sha256(("".join(value for value in stringDictionary.values())).encode())
     randomNumber = random.randrange(len(hashobj.hexdigest())-7)
-    return hashobj.hexdigest()[randomNumber:randomNumber+8]
+    return hashobj
