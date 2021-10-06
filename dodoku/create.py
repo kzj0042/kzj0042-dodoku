@@ -21,6 +21,7 @@ def _create(parms):
     return result
 
 def calculateHash(grid):  
+    print(grid)
     stringDictionary = {new_list: "" for new_list in range(15)}
     j=0
     i=0
