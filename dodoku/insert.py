@@ -11,8 +11,7 @@ def _insert(parms):
     value = int(parms['value'])
     
     colMajorOrder = create.convertToColMajorOrder(grid)
-    if str(value) in colMajorOrder[colNum-1]:
-        print(colMajorOrder[colNum-1])
+    if str(value) in colMajorOrder[colNum-1] and str(value)!=0:
         status = 'warning' 
     
     rows = []
