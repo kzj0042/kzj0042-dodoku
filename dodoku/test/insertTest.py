@@ -69,7 +69,7 @@ class InsertTest(TestCase):
             self.assertDictEqual(expectedStatus, actualStatus)
             self.assertIn(actualHash, expectedHash)
             
-        def test_006_ShouldInsertWithWarningStatus(self):
+        def test_006_ShouldInsertWithWarningStatusSameColumn(self):
             grid = [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,
                     -2,0,0,-6,0,0,0,0,3,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]                                
             parms = {'op':'insert', 'cell':'r7c9', 'value':'5', 'grid':grid, 'integrity':create.calculateHash(grid)}
@@ -83,8 +83,22 @@ class InsertTest(TestCase):
             actualHash = actualResult['integrity']
             self.assertDictEqual(expectedGrid, actualGrid)
             self.assertDictEqual(expectedStatus, actualStatus)
-            self.assertIn(actualHash, expectedHash)        
-                    
+            self.assertIn(actualHash, expectedHash)     
         
+        def test_007_ShouldInsertWithWarningStatusSameRow(self):
+            grid = [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,-1,-4,
+                    0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]
+            parms = {'op':'insert', 'cell':'r7c13', 'value':'2', 'grid':grid, 'integrity':create.calculateHash(grid)}
+            actualResult = insert._insert(parms)              
+            expectedGrid = {'grid':[0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,3,0,-1,-4,
+                                    2,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]}                                
+            expectedStatus = {'status':'warning'}
+            expectedHash = "fa37b9206daa5791e725e17aea6d436bb0b9547c8d6c644eec9d158b7103925e"
+            actualGrid = {'grid':actualResult['grid']}
+            actualStatus = {'status':actualResult['status']}
+            actualHash = actualResult['integrity']
+            self.assertDictEqual(expectedGrid, actualGrid)
+            self.assertDictEqual(expectedStatus, actualStatus)
+            self.assertIn(actualHash, expectedHash)   
         
         #sad path tests
