@@ -43,7 +43,6 @@ def _insert(parms):
     
     if rowNum <=9:
         if value in rows[rowNum-1]:
-            print("here")
             status = 'warning'
         rows[rowNum-1][colNum-1] = value
     else:
@@ -58,6 +57,7 @@ def _insert(parms):
     
     colMajorOrder = create.convertToColMajorOrder(grid)
     if str(value) in colMajorOrder[colNum-1]:
+        print("here")
         status = 'warning'   
         
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':status}
