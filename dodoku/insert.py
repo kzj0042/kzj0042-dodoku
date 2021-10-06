@@ -4,9 +4,8 @@ def _insert(parms):
     grid = parms['grid']
     rowColNum = parms['cell'].lower()
     rowColSplit = rowColNum.split('c')
-    print(rowColSplit)
     rowNum = int(rowColSplit[0][1:])
-    colNum = int(rowColSplit[1][1:])
+    colNum = int(rowColSplit[1])
     rows = []
     for i in range(0, 6):
         row = []
