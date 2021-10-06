@@ -1,12 +1,47 @@
 import dodoku.create as create 
 
 def _insert(parms):
-    grid = [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]                                                 
-    if grid != parms['grid']:
-        grid = [0,-6,0,0,0,0,0,-5,-9,-9,-3,0,-4,-8,0,0,0,0,0,0,0,0,0,-7,-3,0,0,0,-5,0,0,-1,0,0,-4,-6,0,0,0,0,0,-6,0,-9,0,0,-8,-1,-2,0,0,0,0,0,0,0,0,0,-7,0,0,0,3,0,0,0,0,-5,0,-8,0,-4,0,0,-1,0,0,0,-7,0,0,-6,0,-2,0,-9,0,0,0,0,0,0,0,0,-5,0,0,0,0,0,0,0,0,0,-9,-5,-3,0,0,-7,0,-4,0,0,0,0,0,-5,-8,0,0,-1,0,0,-9,0,0,0,-2,-1,0,0,0,0,0,0,0,0,0,-9,-8,0,-6,-1,-6,-1,0,0,0,0,0,-7,0]
-        result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':'ok'}
+    grid = parms['grid']
+    rowColNum = parms['cell'].lower()
+    rowColSplit = rowColNum.split('c')
+    rowNum = rowColSplit[0][1:]
+    colNum = rowColSplit[1][1:]
+    rows = []
+    for i in range(0, 6):
+        row = []
+        for j in range(0, 9):
+            row.append(grid[i*9+j])
+        rows.append(row)
+    
+    for i in range(1):
+        row = []
+        for j in range(15):
+            row.append(grid[54+j])
+        rows.append(row)
+    
+    for i in range(1):
+        row = []
+        for j in range(15):
+            row.append(grid[69+j])
+        rows.append(row)
+    
+    for i in range(1):
+        row = []
+        for j in range(15):
+            row.append(grid[84+j])
+        rows.append(row)
+    
+    for i in range(11, 17):
+        row = []
+        for j in range(0, 9):
+            row.append(grid[i*9+j])
+        rows.append(row)
+    
+    if rowNum <=9:
+        rows[rowNum-1][colNum-1] = parms['value']
     else:
-        grid = [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,3,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]                                                 
-        result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':'ok'}
-
+        rows[rowNum-1][colNum-7] = parms['value']
+        
+ 
+    result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':'ok'}
     return result
