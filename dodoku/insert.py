@@ -6,7 +6,7 @@ def _insert(parms):
     rowColSplit = rowColNum.split('c')
     rowNum = int(rowColSplit[0][1:])
     colNum = int(rowColSplit[1])
-    print(rowNum + colNum)
+    
     rows = []
     for i in range(0, 6):
         row = []
@@ -43,6 +43,10 @@ def _insert(parms):
     else:
         rows[rowNum-1][colNum-7] = parms['value']
         
- 
+    grid = []
+    for row in rows:
+        for col in row:
+            grid.append(col)
+        
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':'ok'}
     return result
