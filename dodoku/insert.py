@@ -45,7 +45,7 @@ def _insert(parms):
         for j in range(0, 9):
             row.append(grid[i*9+j])
         rows.append(row)
-    
+
     subGraphs = createSubGraphs(rows)
     if rowNum<=3:
         if colNum<=3:
@@ -58,7 +58,7 @@ def _insert(parms):
             if value in map(abs, subGraphs[2]):
                 status = 'warning'
                 
-    if rowNum<=6:
+    elif rowNum<=6:
         if colNum<=3:
             if value in map(abs, subGraphs[3]):
                 status = 'warning'
@@ -68,8 +68,8 @@ def _insert(parms):
         elif colNum<=9:
             if value in map(abs, subGraphs[5]):
                 status = 'warning'
-                
-    if rowNum<=9:
+    
+    elif rowNum<=9:
         if colNum<=3:
             if value in map(abs, subGraphs[6]):
                 status = 'warning'
@@ -86,7 +86,7 @@ def _insert(parms):
             if value in map(abs, subGraphs[10]):
                 status = 'warning'
                 
-    if rowNum<=12:
+    elif rowNum<=12:
         if colNum<=9:
             if value in map(abs, subGraphs[11]):
                 status = 'warning'
@@ -110,8 +110,6 @@ def _insert(parms):
 
     if rowNum <=9:
         if value in map(abs,rows[rowNum-1]):
-            print("here")
-
             status = 'warning'
         rows[rowNum-1][colNum-1] = value
     else:
