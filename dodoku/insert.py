@@ -219,5 +219,4 @@ def createSubGraphs(rows):
         for j in range(6, 9):
             graph.append(rows[i][j])
     subGraphs.append(graph)
-    print(subGraphs)
     return subGraphs
