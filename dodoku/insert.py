@@ -1,4 +1,4 @@
-import dodoku.create.calculateHash
+import dodoku.create
 
 def _insert(parms):
     result = {'status': 'insert stub'}
