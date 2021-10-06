@@ -12,7 +12,6 @@ def _insert(parms):
     
     colMajorOrder = create.convertToColMajorOrder(grid)
     if str(value) in colMajorOrder[colNum-1]:
-        print("here")
         print(colMajorOrder[colNum-1])
         status = 'warning' 
     
@@ -111,6 +110,8 @@ def _insert(parms):
 
     if rowNum <=9:
         if value in map(abs,rows[rowNum-1]):
+            print("here")
+
             status = 'warning'
         rows[rowNum-1][colNum-1] = value
     else:
