@@ -8,12 +8,15 @@ def _insert(parms):
     colNum = int(rowColSplit[1])
     status = 'ok'
     
-    value = int(parms['value'])
+    if 'value' not in parms:
+        value = 0
+    else:
+        value = int(parms['value'])
     
     colMajorOrder = create.convertToColMajorOrder(grid)
     if str(value) in colMajorOrder[colNum-1] and str(value)!=0:
         status = 'warning' 
-    
+
     rows = []
     for i in range(0, 6):
         row = []
@@ -45,74 +48,75 @@ def _insert(parms):
             row.append(grid[i*9+j])
         rows.append(row)
 
-    subGraphs = createSubGraphs(rows)
-    if rowNum<=3:
-        if colNum<=3:
-            if value in map(abs, subGraphs[0]):
-                status = 'warning'
-        elif colNum<=6:
-            if value in map(abs, subGraphs[1]):
-                status = 'warning'
-        elif colNum<=9:
-            if value in map(abs, subGraphs[2]):
-                status = 'warning'
-                
-    elif rowNum<=6:
-        if colNum<=3:
-            if value in map(abs, subGraphs[3]):
-                status = 'warning'
-        elif colNum<=6:
-            if value in map(abs, subGraphs[4]):
-                status = 'warning'
-        elif colNum<=9:
-            if value in map(abs, subGraphs[5]):
-                status = 'warning'
-    
-    elif rowNum<=9:
-        if colNum<=3:
-            if value in map(abs, subGraphs[6]):
-                status = 'warning'
-        elif colNum<=6:
-            if value in map(abs, subGraphs[7]):
-                status = 'warning'
-        elif colNum<=9:
-            if value in map(abs, subGraphs[8]):
-                status = 'warning'
-        elif colNum<=12:
-            if value in map(abs, subGraphs[9]):
-                status = 'warning'
-        elif colNum<=15:
-            if value in map(abs, subGraphs[10]):
-                status = 'warning'
-                
-    elif rowNum<=12:
-        if colNum<=9:
-            if value in map(abs, subGraphs[11]):
-                status = 'warning'
-        elif colNum<=12:
-            if value in map(abs, subGraphs[12]):
-                status = 'warning'
-        elif colNum<=15:
-            if value in map(abs, subGraphs[13]):
-                status = 'warning'  
-                  
-    else:
-        if colNum<=9:
-            if value in map(abs, subGraphs[14]):
-                status = 'warning'
-        elif colNum<=12:
-            if value in map(abs, subGraphs[15]):
-                status = 'warning'
-        elif colNum<=15:
-            if value in map(abs, subGraphs[16]):
-                status = 'warning'   
+    if(str(value))>0:
+        subGraphs = createSubGraphs(rows)
+        if rowNum<=3:
+            if colNum<=3:
+                if value in map(abs, subGraphs[0]):
+                    status = 'warning'
+            elif colNum<=6:
+                if value in map(abs, subGraphs[1]):
+                    status = 'warning'
+            elif colNum<=9:
+                if value in map(abs, subGraphs[2]):
+                    status = 'warning'
+                    
+        elif rowNum<=6:
+            if colNum<=3:
+                if value in map(abs, subGraphs[3]):
+                    status = 'warning'
+            elif colNum<=6:
+                if value in map(abs, subGraphs[4]):
+                    status = 'warning'
+            elif colNum<=9:
+                if value in map(abs, subGraphs[5]):
+                    status = 'warning'
+        
+        elif rowNum<=9:
+            if colNum<=3:
+                if value in map(abs, subGraphs[6]):
+                    status = 'warning'
+            elif colNum<=6:
+                if value in map(abs, subGraphs[7]):
+                    status = 'warning'
+            elif colNum<=9:
+                if value in map(abs, subGraphs[8]):
+                    status = 'warning'
+            elif colNum<=12:
+                if value in map(abs, subGraphs[9]):
+                    status = 'warning'
+            elif colNum<=15:
+                if value in map(abs, subGraphs[10]):
+                    status = 'warning'
+                    
+        elif rowNum<=12:
+            if colNum<=9:
+                if value in map(abs, subGraphs[11]):
+                    status = 'warning'
+            elif colNum<=12:
+                if value in map(abs, subGraphs[12]):
+                    status = 'warning'
+            elif colNum<=15:
+                if value in map(abs, subGraphs[13]):
+                    status = 'warning'  
+                      
+        else:
+            if colNum<=9:
+                if value in map(abs, subGraphs[14]):
+                    status = 'warning'
+            elif colNum<=12:
+                if value in map(abs, subGraphs[15]):
+                    status = 'warning'
+            elif colNum<=15:
+                if value in map(abs, subGraphs[16]):
+                    status = 'warning'   
 
     if rowNum <=9:
-        if value in map(abs,rows[rowNum-1]):
+        if value in map(abs,rows[rowNum-1]) and str(value)!=0:
             status = 'warning'
         rows[rowNum-1][colNum-1] = value
     else:
-        if value in map(abs, rows[rowNum-1]):
+        if value in map(abs, rows[rowNum-1]) and str(value)!=0:
             status = 'warning'
         rows[rowNum-1][colNum-7] = value
         
