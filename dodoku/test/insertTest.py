@@ -133,6 +133,21 @@ class InsertTest(TestCase):
             actualHash = actualResult['integrity']
             self.assertDictEqual(expectedGrid, actualGrid)
             self.assertDictEqual(expectedStatus, actualStatus)
-            self.assertIn(actualHash, expectedHash)        
+            self.assertIn(actualHash, expectedHash)   
+        
+        def test_010_ShouldInsertAtMinimumPossibleRowAndColumn(self):
+            grid = [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]
+            parms = {'op':'insert', 'cell':'r1c1', 'value':'3', 'grid':grid, 'integrity':create.calculateHash(grid)}
+            actualResult = insert._insert(parms)              
+            expectedGrid = {'grid':[3,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,
+                                    0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]}                                
+            expectedStatus = {'status':'ok'}
+            expectedHash = "31f66be2552d8f77f2d68cb81722d7b7980e5483b9c66ce468144a8839c7ec12"
+            actualGrid = {'grid':actualResult['grid']}
+            actualStatus = {'status':actualResult['status']}
+            actualHash = actualResult['integrity']
+            self.assertDictEqual(expectedGrid, actualGrid)
+            self.assertDictEqual(expectedStatus, actualStatus)
+            self.assertIn(actualHash, expectedHash)
         
         #sad path tests
