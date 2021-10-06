@@ -57,7 +57,9 @@ def _insert(parms):
     grid = []
     for row in rows:
         for col in row:
-            grid.append(col)  
+            grid.append(col)
+            
+    print(grid)  
         
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':status}
     return result
