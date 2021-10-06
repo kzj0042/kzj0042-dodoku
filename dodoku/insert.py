@@ -60,6 +60,6 @@ def _insert(parms):
             grid.append(col)
             
     print(grid)  
-        
+    print(status)    
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':status}
     return result
