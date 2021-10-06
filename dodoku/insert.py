@@ -57,13 +57,7 @@ def _insert(parms):
     grid = []
     for row in rows:
         for col in row:
-            grid.append(col)
-    
-    colMajorOrder = create.convertToColMajorOrder(grid)
-    if str(value) in colMajorOrder[colNum-1]:
-        print(colMajorOrder[colNum-1])
-        print(str(value))
-        status = 'warning'   
+            grid.append(col)  
         
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':status}
     return result
