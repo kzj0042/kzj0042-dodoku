@@ -43,6 +43,8 @@ def _insert(parms):
     else:
         rows[rowNum-1][colNum-7] = parms['value']
         
+    print(grid[rowNum-1][colNum-1])    
+    
     grid = []
     for row in rows:
         for col in row:
