@@ -20,7 +20,7 @@ def _create(parms):
         result = {'status':'error: invalid level'}
     return result
 
-def calchash2(grid):  
+def calculateHash(grid):  
     stringDictionary = {new_list: "" for new_list in range(15)}
     j=0
     i=0
