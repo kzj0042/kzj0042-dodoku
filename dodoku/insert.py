@@ -14,7 +14,7 @@ def _insert(parms):
         value = int(parms['value'])
     
     colMajorOrder = create.convertToColMajorOrder(grid)
-    if str(value) in colMajorOrder[colNum-1] and str(value)!=0:
+    if str(value) in colMajorOrder[colNum-1] and value > 0:
         status = 'warning' 
 
     rows = []
@@ -48,8 +48,6 @@ def _insert(parms):
             row.append(grid[i*9+j])
         rows.append(row)
         
-    print(status)
-
     if value>0:
         subGraphs = createSubGraphs(rows)
         if rowNum<=3:
