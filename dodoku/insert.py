@@ -48,6 +48,7 @@ def _insert(parms):
     if rowNum <=9:
         if value in rows[rowNum-1]:
             status = 'warning'
+        print(rows[rowNum-1])
         rows[rowNum-1][colNum-1] = value
     else:
         if value in rows[rowNum-1]:
