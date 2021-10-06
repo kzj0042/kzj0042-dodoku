@@ -39,15 +39,14 @@ def _insert(parms):
         rows.append(row)
     
     if rowNum <=9:
-        rows[rowNum-1][colNum-1] = parms['value']
+        rows[rowNum-1][colNum-1] = int(parms['value'])
     else:
-        rows[rowNum-1][colNum-7] = parms['value']
+        rows[rowNum-1][colNum-7] = int(parms['value'])
             
     grid = []
     for row in rows:
         for col in row:
             grid.append(col)
         
-    print(grid)
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':'ok'}
     return result
