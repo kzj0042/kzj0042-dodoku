@@ -46,12 +46,11 @@ def _insert(parms):
         rows.append(row)
         
     if rowNum <=9:
-        if value in rows[rowNum-1]:
+        if value in map(abs,rows[rowNum-1]):
             status = 'warning'
-        print(rows[rowNum-1])
         rows[rowNum-1][colNum-1] = value
     else:
-        if value in rows[rowNum-1]:
+        if value in map(abs, rows[rowNum-1]):
             status = 'warning'
         rows[rowNum-1][colNum-7] = value
     print(rows[rowNum-1][colNum-1])       
