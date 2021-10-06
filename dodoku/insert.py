@@ -53,7 +53,7 @@ def _insert(parms):
         if value in rows[rowNum-1]:
             status = 'warning'
         rows[rowNum-1][colNum-7] = value
-    print(row[rowNum-1][colNum-1])       
+    print(rows[rowNum-1][colNum-1])       
     grid = []
     for row in rows:
         for col in row:
