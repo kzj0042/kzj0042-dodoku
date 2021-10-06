@@ -57,7 +57,7 @@ def _insert(parms):
     
     colMajorOrder = create.convertToColMajorOrder(grid)
     if str(value) in colMajorOrder[colNum-1]:
-        print("here")
+        print(str(value))
         status = 'warning'   
         
     result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':status}
