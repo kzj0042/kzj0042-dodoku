@@ -214,4 +214,13 @@ class InsertTest(TestCase):
             actualResult = insert._insert(parms)
             expectedResult = 'error: missing cell reference'
             actualStatus = actualResult['status']
-            self.assertEqual(expectedResult, actualStatus)                     
+            self.assertEqual(expectedResult, actualStatus)            
+            
+        def test_102_ShouldNotInsertInvalidValue(self):
+            grid = [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,
+                    -2,0,0,-6,0,0,0,0,3,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]                                
+            parms = {'op':'insert', 'cell':'r10c1', 'value':'a', 'grid':grid, 'integrity':create.calculateHash(grid)}
+            actualResult = insert._insert(parms)
+            expectedResult = 'error: invalid value'
+            actualStatus = actualResult['status']
+            self.assertEqual(expectedResult, actualStatus)                        
