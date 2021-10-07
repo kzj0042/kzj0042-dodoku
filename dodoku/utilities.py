@@ -3,98 +3,89 @@ import random
 
 def createSubGraphs(rows):
     graph = []
+    graph2 = []
+    graph3 = []
+    graph4 = []
+    graph5 = []
     subGraphs = []
+    
     for i in range(0, 3):
         for j in range(0, 3):
             graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(0, 3):
         for j in range(3, 6):
-            graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(0, 3):
+            graph2.append(rows[i][j])
         for j in range(6, 9):
-            graph.append(rows[i][j])
+            graph3. append(rows[i][j])
     subGraphs.append(graph)
+    subGraphs.append(graph2)
+    subGraphs.append(graph3)
+    
     graph = []
+    graph2 = []
+    graph3 = []
     
     for i in range(3, 6):
         for j in range(0, 3):
             graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(3, 6):
         for j in range(3, 6):
-            graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(3, 6):
+            graph2.append(rows[i][j])
         for j in range(6, 9):
-            graph.append(rows[i][j])
+            graph3.append(rows[i][j])
     subGraphs.append(graph)
-    graph = []
+    subGraphs.append(graph2)
+    subGraphs.append(graph3)
     
     graph = []
+    graph2 = []
+    graph3 = []
     
     for i in range(6, 9):
         for j in range(0, 3):
             graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(6, 9):
         for j in range(3, 6):
-            graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(6, 9):
+            graph2.append(rows[i][j])
         for j in range(6, 9):
-            graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(6, 9):
+            graph3.append(rows[i][j])
         for j in range(9, 12):
-            graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(6, 9):
+            graph4.append(rows[i][j])
         for j in range(12, 15):
-            graph.append(rows[i][j])
+            graph5.append(rows[i][j])
     subGraphs.append(graph)
+    subGraphs.append(graph2)
+    subGraphs.append(graph3)
+    subGraphs.append(graph4)
+    subGraphs.append(graph5)
+    
     graph = []
+    graph2 = []
+    graph3 = []
     
     for i in range(9, 12):
         for j in range(0, 3):
             graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(9, 12):
         for j in range(3, 6):
-            graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(9, 12):
+            graph2.append(rows[i][j])
         for j in range(6, 9):
-            graph.append(rows[i][j])
+            graph3.append(rows[i][j])
     subGraphs.append(graph)
-    graph = []
+    subGraphs.append(graph2)
+    subGraphs.append(graph3)
     
+    graph = []
+    graph2 = []
+    graph3 = []
     
     for i in range(12, 15):
         for j in range(0, 3):
             graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(12, 15):
         for j in range(3, 6):
-            graph.append(rows[i][j])
-    subGraphs.append(graph)
-    graph = []
-    for i in range(12, 15):
+            graph2.append(rows[i][j])
         for j in range(6, 9):
-            graph.append(rows[i][j])
+            graph3.append(rows[i][j])
     subGraphs.append(graph)
+    subGraphs.append(graph2)
+    subGraphs.append(graph3)
+        
     return subGraphs
 
 def convertToColMajorOrder(grid):
