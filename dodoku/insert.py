@@ -7,6 +7,9 @@ def _insert(parms):
 
     if 'grid' not in parms:
         result = {'status':'error: invalid grid'}
+        
+    if 'integrity' not in parms:
+        result = {'status':'error: integrity mismatch'}
 
     grid = parms['grid']
     
