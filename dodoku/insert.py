@@ -1,4 +1,4 @@
-import dodoku.utilities as utilities
+import dodoku.utilities as utilities    
 
 def _insert(parms):
     if 'cell' not in parms:
@@ -80,7 +80,7 @@ def _insert(parms):
             rows.append(row)           
     
         
-    if value>0:
+    if value>0 and status!='warning':
         status = utilities.checkValidSubgraph(rows, rowNum, colNum, value)
         
     if rowNum <=9:
