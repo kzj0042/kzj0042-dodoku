@@ -4,7 +4,13 @@ def _insert(parms):
     if 'cell' not in parms:
         result = {'status':'error: missing cell reference'}
         return result
+
     grid = parms['grid']
+    
+    if not all(isinstance(value, int) for value in grid):
+        result = {'status':'error: invalid grid'}
+        return result
+    
     rowColNum = parms['cell'].lower()
     rowColSplit = rowColNum.split('c')
     rowNum = int(rowColSplit[0][1:])
