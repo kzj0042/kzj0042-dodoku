@@ -21,10 +21,10 @@ def _insert(parms):
         try:
             value = int(parms['value'])
             if value < 1:
-                result = {'status':'invalid value'}
+                result = {'status':'error: invalid value'}
                 return result
         except ValueError:
-            result = {'status':'invalid value'}
+            result = {'status':'error: invalid value'}
             return result
     
     colMajorOrder = create.convertToColMajorOrder(grid)
