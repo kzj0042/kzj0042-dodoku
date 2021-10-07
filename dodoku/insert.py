@@ -81,4 +81,4 @@ def _insert(parms):
     
         result = {'grid':grid, 'integrity': calculateHash.getEightCharactersOfHash(calculateHash.calculateHash(grid)), 'status':status}
     
-        return result
+    return result
