@@ -37,7 +37,7 @@ def _insert(parms):
         colNum = int(rowColSplit[1])
         status = 'ok'
         
-        if rowNum>15 or colNum>15 or (rowNum<7 and colNum>9) or (rowNum>9 and colNum<7):
+        if rowNum>15 or colNum>15 or rowNum < 1 or colNum<1 or (rowNum<7 and colNum>9) or (rowNum>9 and colNum<7):
             result = {'status':'error: invalid cell reference'}
             return result
         
