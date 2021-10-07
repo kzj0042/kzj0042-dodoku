@@ -26,7 +26,7 @@ def convertToColMajorOrder(grid):
         grid = grid.replace(']', '')
         grid = grid.split(',')
         grid = list(map(int, grid))
-
+        
     stringDictionary = {new_list: "" for new_list in range(15)}
     j=0
     i=0
@@ -86,12 +86,11 @@ def convertToColMajorOrder(grid):
         elif i==144:
             i=147
         if j==15:
-            j=9               
+            j=9
     return stringDictionary
 
 def calculateHash(grid):  
     stringDictionary = convertToColMajorOrder(grid)
-    print(("".join(value for value in stringDictionary.values())))
     hashobj = hashlib.sha256(("".join(value for value in stringDictionary.values())).encode())
     return hashobj.hexdigest()
     
