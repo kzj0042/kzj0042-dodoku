@@ -21,6 +21,8 @@ def _create(parms):
     return result
 
 def convertToColMajorOrder(grid):
+    if not isinstance(grid, list):
+        pass
     stringDictionary = {new_list: "" for new_list in range(15)}
     j=0
     i=0
