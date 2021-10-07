@@ -91,6 +91,7 @@ def convertToColMajorOrder(grid):
 
 def calculateHash(grid):  
     stringDictionary = convertToColMajorOrder(grid)
+    print(("".join(value for value in stringDictionary.values())))
     hashobj = hashlib.sha256(("".join(value for value in stringDictionary.values())).encode())
     return hashobj.hexdigest()
     

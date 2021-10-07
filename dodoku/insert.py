@@ -7,6 +7,8 @@ def _insert(parms):
 
     grid = parms['grid']
     
+    print(grid)
+    
     integrity = parms['integrity'].replace("'", "")
       
     if str(integrity) not in str(create.calculateHash(grid)):
