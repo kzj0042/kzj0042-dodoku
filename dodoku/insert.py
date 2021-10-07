@@ -1,6 +1,8 @@
 import dodoku.create as create 
 
 def _insert(parms):
+    if 'cell' not in parms:
+        result = {'status':'error: missing cell reference'}
     grid = parms['grid']
     rowColNum = parms['cell'].lower()
     rowColSplit = rowColNum.split('c')
