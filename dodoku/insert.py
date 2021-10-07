@@ -18,7 +18,14 @@ def _insert(parms):
     if 'value' not in parms:
         value = 0
     else:
-        value = int(parms['value'])
+        try:
+            value = int(parms['value'])
+            if value < 1:
+                result = {'status':'invalid value'}
+                return result
+        except ValueError:
+            result = {'status':'invalid value'}
+            return result
     
     colMajorOrder = create.convertToColMajorOrder(grid)
     if str(value) in colMajorOrder[colNum-1] and value > 0:
