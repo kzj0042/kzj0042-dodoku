@@ -1,5 +1,6 @@
-import dodoku.utilities as utilities    
-from dodoku.utilities import convertToRowMajorOrder
+import dodoku.changeMajorOrder as changeMajorOrder
+import dodoku.calculateHash as calculateHash
+import dodoku.subGraphs as subGraphs
 
 def _insert(parms):
     if 'cell' not in parms:
@@ -8,11 +9,14 @@ def _insert(parms):
 
     if 'grid' not in parms:
         result = {'status':'error: invalid grid'}
+        return result
         
     if 'integrity' not in parms:
         result = {'status':'error: integrity mismatch'}
+        return result
 
     grid = parms['grid']
+    integrity = parms['integrity'].replace("'", "")
     
     if not isinstance(grid, list):
         grid = grid.replace('[', '')
@@ -27,10 +31,8 @@ def _insert(parms):
     if not all(isinstance(value, int) for value in grid):
         result = {'status':'error: invalid grid'}
         return result
-                   
-    integrity = parms['integrity'].replace("'", "")
-      
-    if str(integrity) not in str(utilities.calculateHash(grid)):
+                         
+    if str(integrity) not in str(calculateHash.calculateHash(grid)):
         result = {'status':'error: integrity mismatch'}
         return result
     
@@ -56,14 +58,14 @@ def _insert(parms):
             result = {'status':'error: invalid value'}
             return result
     
-    colMajorOrder = utilities.convertToColMajorOrder(grid)
+    colMajorOrder = changeMajorOrder.convertToColMajorOrder(grid)
     if str(value) in colMajorOrder[colNum-1] and value > 0:
         status = 'warning' 
 
-    rows = utilities.convertToColMajorOrderList(grid)         
+    rows = changeMajorOrder.convertToColMajorOrderList(grid)         
         
     if value>0 and status!='warning':
-        status = utilities.checkValidSubgraph(rows, rowNum, colNum, value)
+        status = subGraphs.checkValidSubgraph(rows, rowNum, colNum, value)
         
     if rowNum <=9:
         if rows[rowNum-1][colNum-1]<0:
@@ -80,8 +82,8 @@ def _insert(parms):
             status = 'warning'
         rows[rowNum-1][colNum-7] = value
         
-    grid = convertToRowMajorOrder(rows)
+    grid = changeMajorOrder.convertToRowMajorOrder(rows)
 
-    result = {'grid':grid, 'integrity': utilities.getEightCharactersOfHash(utilities.calculateHash(grid)), 'status':status}
+    result = {'grid':grid, 'integrity': calculateHash.getEightCharactersOfHash(calculateHash.calculateHash(grid)), 'status':status}
 
     return result
