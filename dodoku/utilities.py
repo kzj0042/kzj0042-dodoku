@@ -88,6 +88,71 @@ def createSubGraphs(rows):
         
     return subGraphs
 
+def checkValidSubgraph(rows, rowNum, colNum, value):
+    subGraphs = createSubGraphs(rows)
+    status = 'ok'
+    if rowNum<=3:
+        if colNum<=3:
+            if value in map(abs, subGraphs[0]):
+                status = 'warning'
+        elif colNum<=6:
+            if value in map(abs, subGraphs[1]):
+                status = 'warning'
+        elif colNum<=9:
+            if value in map(abs, subGraphs[2]):
+                status = 'warning'
+                
+    elif rowNum<=6:
+        if colNum<=3:
+            if value in map(abs, subGraphs[3]):
+                status = 'warning'
+        elif colNum<=6:
+            if value in map(abs, subGraphs[4]):
+                status = 'warning'
+        elif colNum<=9:
+            if value in map(abs, subGraphs[5]):
+                status = 'warning'
+    
+    elif rowNum<=9:
+        if colNum<=3:
+            if value in map(abs, subGraphs[6]):
+                status = 'warning'
+        elif colNum<=6:
+            if value in map(abs, subGraphs[7]):
+                status = 'warning'
+        elif colNum<=9:
+            if value in map(abs, subGraphs[8]):
+                status = 'warning'
+        elif colNum<=12:
+            if value in map(abs, subGraphs[9]):
+                status = 'warning'
+        elif colNum<=15:
+            if value in map(abs, subGraphs[10]):
+                status = 'warning'
+                
+    elif rowNum<=12:
+        if colNum<=9:
+            if value in map(abs, subGraphs[11]):
+                status = 'warning'
+        elif colNum<=12:
+            if value in map(abs, subGraphs[12]):
+                status = 'warning'
+        elif colNum<=15:
+            if value in map(abs, subGraphs[13]):
+                status = 'warning'  
+                  
+    else:
+        if colNum<=9:
+            if value in map(abs, subGraphs[14]):
+                status = 'warning'
+        elif colNum<=12:
+            if value in map(abs, subGraphs[15]):
+                status = 'warning'
+        elif colNum<=15:
+            if value in map(abs, subGraphs[16]):
+                status = 'warning'   
+    return status
+
 def convertToColMajorOrder(grid):
     if not isinstance(grid, list):
         grid = grid.replace('[', '')
