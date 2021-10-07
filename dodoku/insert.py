@@ -9,6 +9,7 @@ def _insert(parms):
     
     if parms['integrity'] not in create.calculateHash(grid):
         print(create.calculateHash(grid))
+        print(create.calculateHash(grid))
         result = {'status':' integrity mismatch'}
         return result
     
