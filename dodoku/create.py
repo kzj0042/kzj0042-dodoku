@@ -89,5 +89,5 @@ def calculateHash(grid):
     return hashobj.hexdigest()
     
 def getEightCharactersOfHash(hashobj):
-    randomNumber = random.randrange(len(hashobj-7))  
+    randomNumber = random.randrange(len(hashobj)-7)  
     return hashobj[randomNumber:randomNumber+8]
