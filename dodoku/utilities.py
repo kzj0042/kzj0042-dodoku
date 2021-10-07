@@ -222,6 +222,28 @@ def convertToColMajorOrder(grid):
             j=9
     return stringDictionary
 
+def convertToColMajorOrderList(grid):
+    rows = []
+    for i in range(0, 17):
+        row = []
+        if i<6 or i>=11:
+            for j in range(0, 9):
+                row.append(grid[i*9+j])
+            rows.append(row)
+        elif i==6:
+            for j in range(15):
+                row.append(grid[54+j])
+            rows.append(row)   
+        elif i==7:
+            for j in range(15):
+                row.append(grid[69+j])
+            rows.append(row)                     
+        elif i==8:
+            for j in range(15):
+                row.append(grid[84+j])
+            rows.append(row)  
+    return rows
+
 def convertToRowMajorOrder(rows):
     grid = []
     for row in rows:
