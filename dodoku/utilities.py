@@ -222,6 +222,13 @@ def convertToColMajorOrder(grid):
             j=9
     return stringDictionary
 
+def convertToRowMajorOrder(rows):
+    grid = []
+    for row in rows:
+        for col in row:
+            grid.append(col)
+    return grid           
+
 def calculateHash(grid):  
     if grid == '1':
         return "5a3f0c31993d46bcb2ab5f3e8318e734231ee8bdb26cba545fadd7b1732888cd"

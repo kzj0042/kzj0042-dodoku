@@ -1,4 +1,5 @@
 import dodoku.utilities as utilities    
+from dodoku.utilities import convertToRowMajorOrder
 
 def _insert(parms):
     if 'cell' not in parms:
@@ -98,11 +99,8 @@ def _insert(parms):
             status = 'warning'
         rows[rowNum-1][colNum-7] = value
         
-    grid = []
-    for row in rows:
-        for col in row:
-            grid.append(col)
-               
+    grid = convertToRowMajorOrder(rows)
+
     result = {'grid':grid, 'integrity': utilities.getEightCharactersOfHash(utilities.calculateHash(grid)), 'status':status}
 
     return result
