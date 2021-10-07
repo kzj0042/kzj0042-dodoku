@@ -125,21 +125,19 @@ def _insert(parms):
                 if value in map(abs, subGraphs[16]):
                     status = 'warning'   
 
-    print(rows[rowNum-1][colNum-1])
-
     if rowNum <=9:
-        if value in map(abs,rows[rowNum-1]) and value>0:
-            status = 'warning'
-        elif rows[rowNum-1][colNum-1]<0:
+        if rows[rowNum-1][colNum-1]<0:
             result = {'status':'error: attempt to change fixed hint'}
             return result
+        elif value in map(abs,rows[rowNum-1]) and value>0:
+            status = 'warning'
         rows[rowNum-1][colNum-1] = value
     else:
-        if value in map(abs, rows[rowNum-1]) and value>0:
-            status = 'warning'
-        elif rows[rowNum-1][colNum-7]<0:
+        if rows[rowNum-1][colNum-7]<0:
             result = {'status':'error: attempt to change fixed hint'}
             return result
+        elif value in map(abs, rows[rowNum-1]) and value>0:
+            status = 'warning'
         rows[rowNum-1][colNum-7] = value
         
     grid = []
