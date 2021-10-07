@@ -1,4 +1,5 @@
 import dodoku.create as create 
+import dodoku.utilities as utilities
 
 def _insert(parms):
     if 'cell' not in parms:
@@ -19,7 +20,7 @@ def _insert(parms):
                
     integrity = parms['integrity'].replace("'", "")
       
-    if str(integrity) not in str(create.calculateHash(grid)):
+    if str(integrity) not in str(utilities.calculateHash(grid)):
         result = {'status':'error: integrity mismatch'}
         return result
             
@@ -49,7 +50,7 @@ def _insert(parms):
             result = {'status':'error: invalid value'}
             return result
     
-    colMajorOrder = create.convertToColMajorOrder(grid)
+    colMajorOrder = utilities.convertToColMajorOrder(grid)
     if str(value) in colMajorOrder[colNum-1] and value > 0:
         status = 'warning' 
 
@@ -75,7 +76,7 @@ def _insert(parms):
     
         
     if value>0:
-        subGraphs = createSubGraphs(rows)
+        subGraphs = utilities.createSubGraphs(rows)
         if rowNum<=3:
             if colNum<=3:
                 if value in map(abs, subGraphs[0]):
@@ -157,6 +158,6 @@ def _insert(parms):
         for col in row:
             grid.append(col)
                
-    result = {'grid':grid, 'integrity': create.getEightCharactersOfHash(create.calculateHash(grid)), 'status':status}
+    result = {'grid':grid, 'integrity': utilities.getEightCharactersOfHash(utilities.calculateHash(grid)), 'status':status}
 
     return result
