@@ -6,18 +6,22 @@ def _insert(parms):
         return result
 
     grid = parms['grid']
-        
-    integrity = parms['integrity'].replace("'", "")
-      
-    if str(integrity) not in str(create.calculateHash(grid)):
-        result = {'status':'error: integrity mismatch'}
-        return result
     
     if not isinstance(grid, list):
         grid = grid.replace('[', '')
         grid = grid.replace(']', '')
         grid = grid.split(',')
-        grid = list(map(int, grid))
+        try:
+            grid = list(map(int, grid))
+        except ValueError:
+            result = {'status':'error: invalid grid'}
+            return result             
+               
+    integrity = parms['integrity'].replace("'", "")
+      
+    if str(integrity) not in str(create.calculateHash(grid)):
+        result = {'status':'error: integrity mismatch'}
+        return result
             
     if not all(isinstance(value, int) for value in grid):
         result = {'status':'error: invalid grid'}
@@ -142,7 +146,7 @@ def _insert(parms):
             elif colNum<=15:
                 if value in map(abs, subGraphs[16]):
                     status = 'warning'   
-
+        
     if rowNum <=9:
         if rows[rowNum-1][colNum-1]<0:
             result = {'status':'error: attempt to change fixed hint'}
