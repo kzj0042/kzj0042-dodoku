@@ -6,8 +6,10 @@ def _insert(parms):
         return result
 
     grid = parms['grid']
-        
-    if str(parms['integrity']) not in create.calculateHash(grid):
+    
+    integrity = parms['integrity'].replace("'", "")
+      
+    if str(integrity) not in str(create.calculateHash(grid)):
         result = {'status':'error: integrity mismatch'}
         return result
     
@@ -15,7 +17,8 @@ def _insert(parms):
         grid = grid.replace('[', '')
         grid = grid.replace(']', '')
         grid = grid.split(',')
-    
+        grid = list(map(int, grid))
+            
     if not all(isinstance(value, int) for value in grid):
         result = {'status':'error: invalid grid'}
         return result
@@ -160,7 +163,7 @@ def _insert(parms):
         for col in row:
             grid.append(col)
                
-    result = {'grid':grid, 'integrity': create.calculateHash(grid), 'status':status}
+    result = {'grid':grid, 'integrity': create.getEightCharactersOfHash(create.calculateHash(grid)), 'status':status}
 
     return result
 

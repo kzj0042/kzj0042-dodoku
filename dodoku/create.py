@@ -25,6 +25,8 @@ def convertToColMajorOrder(grid):
         grid = grid.replace('[', '')
         grid = grid.replace(']', '')
         grid = grid.split(',')
+        grid = list(map(int, grid))
+
     stringDictionary = {new_list: "" for new_list in range(15)}
     j=0
     i=0
