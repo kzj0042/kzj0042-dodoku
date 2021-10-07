@@ -22,7 +22,9 @@ def _create(parms):
 
 def convertToColMajorOrder(grid):
     if not isinstance(grid, list):
-        pass
+        grid = grid.replace('[', '')
+        grid = grid.replace(']', '')
+        grid = grid.split(',')
     stringDictionary = {new_list: "" for new_list in range(15)}
     j=0
     i=0
