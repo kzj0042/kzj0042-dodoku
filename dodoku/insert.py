@@ -128,10 +128,16 @@ def _insert(parms):
     if rowNum <=9:
         if value in map(abs,rows[rowNum-1]) and value>0:
             status = 'warning'
+        elif rows[rowNum-1][colNum-1]<0:
+            result = {'status':'error: attempt to change fixed hint'}
+            return result
         rows[rowNum-1][colNum-1] = value
     else:
         if value in map(abs, rows[rowNum-1]) and value>0:
             status = 'warning'
+        elif rows[rowNum-1][colNum-7]<0:
+            result = {'status':'error: attempt to change fixed hint'}
+            return result
         rows[rowNum-1][colNum-7] = value
         
     grid = []
