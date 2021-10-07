@@ -5,6 +5,9 @@ def _insert(parms):
         result = {'status':'error: missing cell reference'}
         return result
 
+    if 'grid' not in parms:
+        result = {'status':'error: invalid grid'}
+
     grid = parms['grid']
     
     if not isinstance(grid, list):
@@ -16,15 +19,15 @@ def _insert(parms):
         except ValueError:
             result = {'status':'error: invalid grid'}
             return result             
-               
+        
+    if not all(isinstance(value, int) for value in grid):
+        result = {'status':'error: invalid grid'}
+        return result
+                   
     integrity = parms['integrity'].replace("'", "")
       
     if str(integrity) not in str(utilities.calculateHash(grid)):
         result = {'status':'error: integrity mismatch'}
-        return result
-            
-    if not all(isinstance(value, int) for value in grid):
-        result = {'status':'error: invalid grid'}
         return result
     
     rowColNum = parms['cell'].lower()
