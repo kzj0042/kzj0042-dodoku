@@ -11,6 +11,11 @@ def _insert(parms):
         result = {'status':'error: integrity mismatch'}
         return result
     
+    if not isinstance(grid, list):
+        grid = grid.replace('[', '')
+        grid = grid.replace(']', '')
+        grid = grid.split(',')
+    
     if not all(isinstance(value, int) for value in grid):
         result = {'status':'error: invalid grid'}
         return result
