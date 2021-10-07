@@ -86,6 +86,8 @@ def convertToColMajorOrder(grid):
 def calculateHash(grid):  
     stringDictionary = convertToColMajorOrder(grid)
     hashobj = hashlib.sha256(("".join(value for value in stringDictionary.values())).encode())
-    randomNumber = random.randrange(len(hashobj.hexdigest())-7)
-
-    return hashobj.hexdigest()[randomNumber:randomNumber+8]
+    return hashobj.hexdigest()
+    
+def getEightCharactersOfHash(hashobj):
+    randomNumber = random.randrange(len(hashobj-7))  
+    return hashobj[randomNumber:randomNumber+8]
