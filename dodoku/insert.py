@@ -42,7 +42,7 @@ def _insert(parms):
     else:
         try:
             value = int(parms['value'])
-            if value < 0:
+            if value < 0 or value>9:
                 result = {'status':'error: invalid value'}
                 return result
         except ValueError:
