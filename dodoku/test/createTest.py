@@ -1,6 +1,6 @@
 from unittest import TestCase
 import dodoku.create as create 
-import dodoku.utilities as utilities
+import dodoku.calculateHash as calculateHash
 
 class CreateTest(TestCase):
         #happy path tests
@@ -77,7 +77,7 @@ class CreateTest(TestCase):
                     
         def test_006_shouldCreateSha256HashLevel1(self):
             expectedResult = '5a3f0c31993d46bcb2ab5f3e8318e734231ee8bdb26cba545fadd7b1732888cd'
-            actualResult = utilities.getEightCharactersOfHash(utilities.calculateHash('1'))
+            actualResult = calculateHash.getEightCharactersOfHash(calculateHash.calculateHash('1'))
             self.assertIn(actualResult, expectedResult)
             
         def test_007_shouldCreateSha256HashLevel2(self):
@@ -86,7 +86,7 @@ class CreateTest(TestCase):
 6,0,-9,0,0,-8,-1,-2,0,0,0,0,0,0,0,0,0,-7,0,0,0,0,0,0,0,0,-5,0,-8,0,-4,0,0,-1,0,0,0,-7,0,0,-6,0,-2,0,-
 9,0,0,0,0,0,0,0,0,-5,0,0,0,0,0,0,0,0,0,-9,-5,-3,0,0,-7,0,-4,0,0,0,0,0,-5,-8,0,0,-1,0,0,-9,0,0,0,-2,-
 1,0,0,0,0,0,0,0,0,0,-9,-8,0,-6,-1,-6,-1,0,0,0,0,0,-7,0]
-            actualResult = utilities.getEightCharactersOfHash(utilities.calculateHash(grid))
+            actualResult = calculateHash.getEightCharactersOfHash(calculateHash.calculateHash(grid))
             self.assertIn(actualResult, expectedResult)
 
         def test_008_shouldCreateSha256HashLevel3(self):
@@ -95,7 +95,7 @@ class CreateTest(TestCase):
 5,0,-2,0,0,-4,0,-8,-3,0,-4,0,-7,-2,0,0,0,-1,-2,0,-8,0,0,0,0,-3,0,0,0,0,0,0,0,-6,0,-4,0,0,0,-8,0,-
 7,0,0,0,0,0,0,0,-5,0,0,0,0,-1,0,-6,-3,0,0,0,-9,-8,0,-5,0,-1,-2,0,-2,0,0,-7,0,-1,0,0,-3,0,-4,-3,0,-8,0,-
 6,-5,0,0,0,-7,-3,0,-5,-9,0,0,0,0,0,-4,0,-2,0,0,0,0,0,0,0,-6,0,0,0,0]
-            actualResult = utilities.getEightCharactersOfHash(utilities.calculateHash(grid))
+            actualResult = calculateHash.getEightCharactersOfHash(calculateHash.calculateHash(grid))
             self.assertIn(actualResult, expectedResult)
             
         def test_009_ShouldCreateLevelWithNoLevelParameter(self):
