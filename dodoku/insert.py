@@ -9,7 +9,7 @@ def _insert(parms):
     status = 'ok'
 
     if rowNum>15 or colNum>15 or (rowNum<7 and colNum>9) or (rowNum>9 and colNum<7):
-        result = {'status':'error: invalid cell'}
+        result = {'status':'error: invalid cell reference'}
         return result
     
     if 'value' not in parms:
