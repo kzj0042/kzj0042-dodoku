@@ -14,7 +14,7 @@ def _insert(parms):
     else:
         grid = parms['grid']
         integrity = parms['integrity'].replace("'", "")
-        
+        print("here")
         if not isinstance(grid, list):
             grid = grid.replace('[', '')
             grid = grid.replace(']', '')
