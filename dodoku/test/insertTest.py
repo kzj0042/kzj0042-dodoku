@@ -315,7 +315,7 @@ class InsertTest(TestCase):
             actualStatus = actualResult['status']
             self.assertEqual(expectedResult, actualStatus)  
             
-        def test113_ShouldNotInsertValueColumnNotGiven(self):
+        def test_113_ShouldNotInsertValueColumnNotGiven(self):
             grid = [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,
                     -2,0,0,-6,0,0,0,0,3,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]     
             parms = {'op':'insert', 'cell':'r7', 'value':'3', 'grid':grid, 'integrity':calculteHash.getEightCharactersOfHash(calculteHash.calculateHash(grid))}      
@@ -324,12 +324,20 @@ class InsertTest(TestCase):
             actualStatus = actualResult['status']
             self.assertEqual(expectedResult, actualStatus)            
             
-        def test114_ShouldNotInsertValueRowAndColumnNotGiven(self):
+        def test_114_ShouldNotInsertValueRowAndColumnNotGiven(self):
             grid = [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,
                     -2,0,0,-6,0,0,0,0,3,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]     
             parms = {'op':'insert', 'cell':'', 'value':'3', 'grid':grid, 'integrity':calculteHash.getEightCharactersOfHash(calculteHash.calculateHash(grid))}      
             actualResult = insert._insert(parms)
             expectedResult = 'error: missing cell reference' 
             actualStatus = actualResult['status']
-            self.assertEqual(expectedResult, actualStatus)          
+            self.assertEqual(expectedResult, actualStatus)    
             
+        def test_115_ShouldNotInsertLargeGridValueGiven(self):
+            grid = [10,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,
+                    -2,0,0,-6,0,0,0,0,3,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]     
+            parms = {'op':'insert', 'cell':'r7c9', 'value':'3', 'grid':grid, 'integrity':calculteHash.getEightCharactersOfHash(calculteHash.calculateHash(grid))}      
+            actualResult = insert._insert(parms)
+            expectedResult = 'error: invalid grid' 
+            actualStatus = actualResult['status']
+            self.assertEqual(expectedResult, actualStatus)                  
