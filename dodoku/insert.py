@@ -24,7 +24,7 @@ def _insert(parms):
             except ValueError:
                 result = {'status':'error: invalid grid'}
                 return result             
-            
+
         if len(grid)!=153 or not all((isinstance(value, int) and value<10 and value>-10)  for value in grid):
             result = {'status':'error: invalid grid'}
             return result
