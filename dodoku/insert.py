@@ -3,6 +3,7 @@ import dodoku.calculateHash as calculateHash
 import dodoku.subGraphs as subGraphs
 
 def _insert(parms):
+    return
     if 'cell' not in parms:
         result = {'status':'error: missing cell reference'}
     elif 'grid' not in parms:
@@ -14,7 +15,6 @@ def _insert(parms):
     else:
         grid = parms['grid']
         integrity = parms['integrity'].replace("'", "")
-        print("here")
         if not isinstance(grid, list):
             grid = grid.replace('[', '')
             grid = grid.replace(']', '')
