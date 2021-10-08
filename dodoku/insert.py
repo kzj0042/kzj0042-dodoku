@@ -9,7 +9,7 @@ def _insert(parms):
         result = {'status':'error: invalid grid'}
     elif 'integrity' not in parms:
         result = {'status':'error: integrity mismatch'}
-    elif not parms['cell'].lower().startswith('r'):
+    elif not parms['cell'].lower().startswith('r') or (parms['cell'].lower()[2]!='c' and parms['cell'].lower()[3]!='c') :
         result = {'status': 'error: missing cell reference'}
     else:
         grid = parms['grid']
