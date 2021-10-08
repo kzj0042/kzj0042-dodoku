@@ -7,7 +7,7 @@ def _insert(parms):
         result = {'status':'error: missing cell reference'}
     elif 'grid' not in parms:
         result = {'status':'error: invalid grid'}
-    elif 'integrity' not in parms or len(parms['integrity']) != 8:
+    elif 'integrity' not in parms:
         result = {'status':'error: integrity mismatch'}
     elif len(parms['cell']) < 4 or not parms['cell'].lower().startswith('r') or (parms['cell'].lower()[2]!='c' and parms['cell'].lower()[3]!='c'):
         result = {'status': 'error: missing cell reference'}
@@ -29,7 +29,7 @@ def _insert(parms):
             result = {'status':'error: invalid grid'}
             return result
                              
-        if str(integrity) not in str(calculateHash.calculateHash(grid)):
+        if len(parms['integrity']) != 8 or str(integrity) not in str(calculateHash.calculateHash(grid)):
             result = {'status':'error: integrity mismatch'}
             return result
         
