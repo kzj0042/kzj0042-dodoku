@@ -25,7 +25,7 @@ def _insert(parms):
                 result = {'status':'error: invalid grid'}
                 return result             
             
-        if not all(isinstance(value, int) for value in grid) or not all(value<10 for value in grid):
+        if not all(isinstance(value, int) for value in grid) or not all((value<10 and value>-10) for value in grid):
             result = {'status':'error: invalid grid'}
             return result
                              
