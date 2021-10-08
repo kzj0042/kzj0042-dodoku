@@ -3,7 +3,6 @@ import dodoku.calculateHash as calculateHash
 import dodoku.subGraphs as subGraphs
 
 def _insert(parms):
-    print("here")
     if 'cell' not in parms:
         result = {'status':'error: missing cell reference'}
     elif 'grid' not in parms:
