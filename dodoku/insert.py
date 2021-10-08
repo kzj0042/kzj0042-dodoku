@@ -29,7 +29,7 @@ def _insert(parms):
             result = {'status':'error: invalid grid'}
             return result
                              
-        if len(parms['integrity']) != 8 or str(integrity) not in str(calculateHash.calculateHash(grid)):
+        if len(integrity) != 8 or str(integrity) not in str(calculateHash.calculateHash(grid)):
             result = {'status':'error: integrity mismatch'}
             return result
         
