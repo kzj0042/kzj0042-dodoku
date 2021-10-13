@@ -42,7 +42,7 @@ def _insert(parms):
             result = {'status':'error: invalid cell reference'}
             return result
         
-        if 'value' not in parms:
+        if 'value' not in parms or parms['value'] == "":
             value = 0
         else:
             try:
