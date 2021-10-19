@@ -13,8 +13,10 @@ def _insert(parms):
         result = {'status': 'error: missing cell reference'}
     else:
         grid = parms['grid']
-        integrity = parms['integrity'].replace("'", "")
-        integrity = parms['integrity'].replace('"', '')
+        if "'" in parms['integrity']:
+            integrity = parms['integrity'].replace("'", "")
+        else:
+            integrity = parms['integrity'].replace('"', '')
         if not isinstance(grid, list):
             grid = grid.replace('[', '')
             grid = grid.replace(']', '')
