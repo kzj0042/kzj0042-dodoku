@@ -1,3 +1,8 @@
+"""
+    Created on October 21, 2021
+    
+    @author: Kyle Julien
+"""
 from unittest import TestCase
 import dodoku.insert as insert
 import dodoku.calculateHash as calculteHash

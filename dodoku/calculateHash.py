@@ -1,3 +1,8 @@
+"""
+    Created on October 21, 2021
+    
+    @author: Kyle Julien
+"""
 import hashlib
 import random
 import dodoku.changeMajorOrder as changeMajorOrder

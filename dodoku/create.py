@@ -1,3 +1,8 @@
+"""
+    Created on September 29, 2021
+    
+    @author: Kyle Julien
+"""
 import dodoku.calculateHash as calculateHash
 
 def _create(parms):

@@ -1,3 +1,8 @@
+"""
+    Created on October 21, 2021
+    
+    @author: Kyle Julien
+"""
 def convertToColMajorOrder(grid):
     if not isinstance(grid, list):
         grid = grid.replace('[', '')

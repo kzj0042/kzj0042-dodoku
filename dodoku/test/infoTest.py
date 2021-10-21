@@ -1,3 +1,8 @@
+"""
+    Created on September 29, 2021
+    
+    @author: Kyle Julien
+"""
 import unittest
 import dodoku.info as info
 

@@ -1,3 +1,8 @@
+"""
+    Created on October 21, 2021
+    
+    @author: Kyle Julien
+"""
 import dodoku.changeMajorOrder as changeMajorOrder
 import dodoku.calculateHash as calculateHash
 import dodoku.subGraphs as subGraphs
