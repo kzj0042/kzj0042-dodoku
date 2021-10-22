@@ -69,20 +69,19 @@ def _insert(parms):
         colMajorOrder = changeMajorOrder.convertToColMajorOrder(grid)
         if colNum>6 and colNum<10 and value>0:
             if rowNum<=6:
-                colList = map(abs, colMajorOrder[colNum-1][0:9])
+                colList = colMajorOrder[colNum-1][0:9]
                 if str(value) in colList:
                     status = 'warning'
             elif rowNum>9:
-                colList = map(abs, colMajorOrder[colNum-1][6:15])
+                colList = colMajorOrder[colNum-1][6:15]
                 if str(value) in colList:
                     status = 'warning'
             else: 
-                if str(value) in map(abs, colMajorOrder[colNum-1]) and value > 0:
+                if str(value) in colMajorOrder[colNum-1] and value > 0:
                     status = 'warning' 
-        
     
         rows = changeMajorOrder.convertToColMajorOrderList(grid)         
-        if rowNum>6 and rowNum<10:
+        if rowNum>6 and rowNum<10 and value>0:
             if colNum<=6:
                 rowList = rows[rowNum-1][0:9]
                 if str(value) in rowList:
