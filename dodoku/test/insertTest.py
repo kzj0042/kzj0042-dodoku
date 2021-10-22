@@ -243,7 +243,22 @@ class InsertTest(TestCase):
             actualHash = actualResult['integrity']
             self.assertDictEqual(expectedGrid, actualGrid)
             self.assertDictEqual(expectedStatus, actualStatus)
-            self.assertIn(actualHash, expectedHash)                               
+            self.assertIn(actualHash, expectedHash)    
+            
+        def test_017_ShouldInsertHighColHighRow(self):
+            grid = [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]
+            parms = {'op':'insert', 'cell':'r7c13', 'value':'2', 'grid':grid, 'integrity':calculteHash.getEightCharactersOfHash(calculteHash.calculateHash(grid))}
+            actualResult = insert._insert(parms)              
+            expectedGrid = {'grid':[0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,
+                                    0,0,-1,-4,2,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]}                                
+            expectedStatus = {'status':'ok'}
+            expectedHash = "9cb5eea670e0547ab2bc25f3636782801a09e98b8f5cb9217dbcc2267057c597"
+            actualGrid = {'grid':actualResult['grid']}
+            actualStatus = {'status':actualResult['status']}
+            actualHash = actualResult['integrity']
+            self.assertDictEqual(expectedGrid, actualGrid)
+            self.assertDictEqual(expectedStatus, actualStatus)
+            self.assertIn(actualHash, expectedHash)                           
         
         #sad path tests
         def test_100_ShouldNotInsertInvalidCell(self):
