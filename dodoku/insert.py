@@ -66,6 +66,18 @@ def _insert(parms):
             except ValueError:
                 result = {'status':'error: invalid value'}
                 return result
+            
+        rows = changeMajorOrder.convertToColMajorOrderList(grid)         
+        if rowNum <=9:
+            if rows[rowNum-1][colNum-1]<0:
+                result = {'status':'error: attempt to change fixed hint'}
+                return result
+            rows[rowNum-1][colNum-1] = value
+        else:
+            if rows[rowNum-1][colNum-7]<0:
+                result = {'status':'error: attempt to change fixed hint'}
+                return result
+            rows[rowNum-1][colNum-7] = value
         
         colMajorOrder = changeMajorOrder.convertToColMajorOrder(grid)
         if colNum>6 and colNum<10 and value>0:
@@ -84,7 +96,6 @@ def _insert(parms):
             if str(value) in str(colMajorOrder[colNum-1]) and value>0:
                 status = 'warning'            
     
-        rows = changeMajorOrder.convertToColMajorOrderList(grid)         
         if rowNum>6 and rowNum<10 and value>0:
             if colNum<=6:
                 rowList = rows[rowNum-1][0:9]
@@ -103,17 +114,6 @@ def _insert(parms):
             
         if value>0 and status!='warning':
             status = subGraphs.checkValidSubgraph(rows, rowNum, colNum, value)
-            
-        if rowNum <=9:
-            if rows[rowNum-1][colNum-1]<0:
-                result = {'status':'error: attempt to change fixed hint'}
-                return result
-            rows[rowNum-1][colNum-1] = value
-        else:
-            if rows[rowNum-1][colNum-7]<0:
-                result = {'status':'error: attempt to change fixed hint'}
-                return result
-            rows[rowNum-1][colNum-7] = value
             
         grid = changeMajorOrder.convertToRowMajorOrder(rows)
     
