@@ -6,6 +6,7 @@
 import dodoku.changeMajorOrder as changeMajorOrder
 import dodoku.calculateHash as calculateHash
 import dodoku.subGraphs as subGraphs
+import re
 
 def _insert(parms):
     if 'cell' not in parms:
@@ -69,32 +70,32 @@ def _insert(parms):
         colMajorOrder = changeMajorOrder.convertToColMajorOrder(grid)
         if colNum>6 and colNum<10 and value>0:
             if rowNum<=6:
-                colList = colMajorOrder[colNum-1][0:9]
-                if str(value) in colList:
+                colList = re.findall(r'-?\d|[a-z]|\W?', colMajorOrder[colNum-1])[0:9]
+                if str(value) in str(colList):
                     status = 'warning'
             elif rowNum>9:
-                colList = colMajorOrder[colNum-1][6:15]
-                if str(value) in colList:
+                colList = re.findall(r'-?\d|[a-z]|\W?', colMajorOrder[colNum-1])[6:15]
+                if str(value) in str(colList):
                     status = 'warning'
             else: 
-                if str(value) in colMajorOrder[colNum-1] and value > 0:
+                if str(value) in str(colMajorOrder[colNum-1]) and value > 0:
                     status = 'warning' 
         else:
-            if str(value) in colMajorOrder[colNum-1] and value>0:
+            if str(value) in str(colMajorOrder[colNum-1]) and value>0:
                 status = 'warning'            
     
         rows = changeMajorOrder.convertToColMajorOrderList(grid)         
         if rowNum>6 and rowNum<10 and value>0:
             if colNum<=6:
-                rowList = rows[rowNum-1][0:9]
-                if str(value) in rowList:
+                rowList = re.findall(r'-?\d|[a-z]|\W?', rows[rowNum-1])[0:9]
+                if str(value) in str(rowList):
                     status='warning'
-            elif colNum>10:
-                rowList = rows[rowNum-1][6:15]
-                if str(value) in rowList:
+            elif colNum>9:
+                rowList = re.findall(r'-?\d|[a-z]|\W?', rows[rowNum-1])[6:15]
+                if str(value) in str(rowList):
                     status = 'warning'
             else:
-                if str(value) in rows[rowNum-1]:
+                if str(value) in str(rows[rowNum-1]):
                     status = 'warning'
         else:
             if value in map(abs,rows[rowNum-1]) and value>0:
