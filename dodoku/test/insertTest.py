@@ -213,6 +213,21 @@ class InsertTest(TestCase):
             actualHash = actualResult['integrity']
             self.assertDictEqual(expectedGrid, actualGrid)
             self.assertDictEqual(expectedStatus, actualStatus)
+            self.assertIn(actualHash, expectedHash) 
+            
+        def test_015_ShouldInsertHighRowLowCol(self):
+            grid = [0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]
+            parms = {'op':'insert', 'cell':'r14c8', 'value':'1', 'grid':grid, 'integrity':calculteHash.getEightCharactersOfHash(calculteHash.calculateHash(grid))}
+            actualResult = insert._insert(parms)              
+            expectedGrid = {'grid':[0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,
+                                    0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,1,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]}                                
+            expectedStatus = {'status':'ok'}
+            expectedHash = "b169a61c628de1ffc12fe89bcb2d297378de10649796adce21b7fa4115cf19f3"
+            actualGrid = {'grid':actualResult['grid']}
+            actualStatus = {'status':actualResult['status']}
+            actualHash = actualResult['integrity']
+            self.assertDictEqual(expectedGrid, actualGrid)
+            self.assertDictEqual(expectedStatus, actualStatus)
             self.assertIn(actualHash, expectedHash)                     
         
         #sad path tests
