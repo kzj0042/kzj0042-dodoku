@@ -87,11 +87,11 @@ def _insert(parms):
         rows = changeMajorOrder.convertToColMajorOrderList(grid)         
         if rowNum>6 and rowNum<10 and value>0:
             if colNum<=6:
-                rowList = re.findall(r'-?\d|[a-z]|\W?', rows[rowNum-1])[0:9]
+                rowList = re.findall(r'-?\d|[a-z]|\W?', str(rows[rowNum-1]))[0:9]
                 if str(value) in str(rowList):
                     status='warning'
             elif colNum>9:
-                rowList = re.findall(r'-?\d|[a-z]|\W?', rows[rowNum-1])[6:15]
+                rowList = re.findall(r'-?\d|[a-z]|\W?', str(rows[rowNum-1]))[6:15]
                 if str(value) in str(rowList):
                     status = 'warning'
             else:
