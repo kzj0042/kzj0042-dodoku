@@ -66,8 +66,9 @@ def _insert(parms):
             except ValueError:
                 result = {'status':'error: invalid value'}
                 return result
-            
+        
         rows = changeMajorOrder.convertToColMajorOrderList(grid)         
+        
         if rowNum <=9:
             if rows[rowNum-1][colNum-1]<0:
                 result = {'status':'error: attempt to change fixed hint'}
@@ -106,7 +107,7 @@ def _insert(parms):
                 if value in map(abs, rowList):
                     status = 'warning'
             else:
-                if str(value) in str(rows[rowNum-1]):
+                if value in map(abs, rows[rowNum-1]):
                     status = 'warning'
         else:
             if value in map(abs,rows[rowNum-1]) and value>0:
