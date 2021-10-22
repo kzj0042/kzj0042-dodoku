@@ -116,14 +116,8 @@ def _insert(parms):
             status = subGraphs.checkValidSubgraph(rows, rowNum, colNum, value)
             
         if rowNum <=9:
-            if rows[rowNum-1][colNum-1]<0:
-                result = {'status':'error: attempt to change fixed hint'}
-                return result
             rows[rowNum-1][colNum-1] = value
         else:
-            if rows[rowNum-1][colNum-7]<0:
-                result = {'status':'error: attempt to change fixed hint'}
-                return result
             rows[rowNum-1][colNum-7] = value
             
         grid = changeMajorOrder.convertToRowMajorOrder(rows)
