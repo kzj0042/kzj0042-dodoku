@@ -79,6 +79,9 @@ def _insert(parms):
             else: 
                 if str(value) in colMajorOrder[colNum-1] and value > 0:
                     status = 'warning' 
+        else:
+            if str(value) in colMajorOrder[colNum-1] and value>0:
+                status = 'warning'            
     
         rows = changeMajorOrder.convertToColMajorOrderList(grid)         
         if rowNum>6 and rowNum<10 and value>0:
