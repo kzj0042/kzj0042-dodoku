@@ -92,7 +92,6 @@ def _insert(parms):
                 if str(value) in str(colList):
                     status = 'warning'
             else: 
-                print(str(colMajorOrder[colNum-1]))
                 if str(value) in str(colMajorOrder[colNum-1]) and value > 0:
                     status = 'warning' 
         else:
