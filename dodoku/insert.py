@@ -82,6 +82,21 @@ def _insert(parms):
         
     
         rows = changeMajorOrder.convertToColMajorOrderList(grid)         
+        if rowNum>6 and rowNum<10:
+            if colNum<=6:
+                rowList = rows[rowNum-1][0:9]
+                if str(value) in rowList:
+                    status='warning'
+            elif colNum>10:
+                rowList = rows[rowNum-1][6:15]
+                if str(value) in rowList:
+                    status = 'warning'
+            else:
+                if str(value) in rows[rowNum-1]:
+                    status = 'warning'
+        else:
+            if value in map(abs,rows[rowNum-1]) and value>0:
+                status = 'warning'
             
         if value>0 and status!='warning':
             status = subGraphs.checkValidSubgraph(rows, rowNum, colNum, value)
@@ -90,15 +105,11 @@ def _insert(parms):
             if rows[rowNum-1][colNum-1]<0:
                 result = {'status':'error: attempt to change fixed hint'}
                 return result
-            elif value in map(abs,rows[rowNum-1]) and value>0:
-                status = 'warning'
             rows[rowNum-1][colNum-1] = value
         else:
             if rows[rowNum-1][colNum-7]<0:
                 result = {'status':'error: attempt to change fixed hint'}
                 return result
-            elif value in map(abs, rows[rowNum-1]) and value>0:
-                status = 'warning'
             rows[rowNum-1][colNum-7] = value
             
         grid = changeMajorOrder.convertToRowMajorOrder(rows)
