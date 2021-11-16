@@ -1,5 +1,4 @@
 import dodoku.insert as insert
-import dodoku.calculateHash as calculateHash
  
 def _recommend(parms):
     if 'cell' not in parms:
