@@ -15,7 +15,7 @@ class RecommendTest(TestCase):
             parms = {'op':'recommend', 'cell':'r7c9',  'grid':grid, 'integrity':calculteHash.getEightCharactersOfHash(calculteHash.calculateHash(grid))}
             actualResult = recommend._recommend(parms)
             expectedStatus = {"status":"ok"}
-            expectedRecommendation = {"recommend":[2,3,5,7,8]}
+            expectedRecommendation = {"recommendation":[2,3,5,7,8]}
             actualStatus = {'status':actualResult['status']}
             actualRecommendation = {'recommendation':actualResult['recommendation']}
             self.assertDictEqual(expectedStatus, actualStatus)
