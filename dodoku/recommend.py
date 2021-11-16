@@ -2,11 +2,13 @@ import dodoku.insert as insert
 import dodoku.calculateHash as calculateHash
  
 def _recommend(parms): 
-    print(len(parms['grid']))
-
     recommend = []
     status = "ok"
     grid = parms['grid']
+    if len(grid)!=153:
+        result = {'status':'invalid grid'}
+        return result
+    
     cell = str(parms['cell'])
     
     for i in range(1, 10):
