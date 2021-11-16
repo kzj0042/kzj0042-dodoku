@@ -1,3 +1,3 @@
 def _recommend(parms):
-    result = {'status': 'recommend stub'}
+    result = {"grid":parms['grid'], "status":"ok"}
     return result
