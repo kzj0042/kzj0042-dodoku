@@ -12,7 +12,7 @@ def _recommend(parms):
         parms = insert._insert(parms)
         if parms['status'] == 'ok':
             recommend.append(int(i))
-        elif "error:" in parms['status'] and "immutable" not in parms['status']:
+        elif "error:" in parms['status'] and "attempt to change fixed hint" not in parms['status']:
             result = {'status':parms['status']}
             return result
         
