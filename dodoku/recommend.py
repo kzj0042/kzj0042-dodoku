@@ -18,6 +18,9 @@ def _recommend(parms):
     recommend = []
     status = "ok"
     grid = parms['grid']
+    if not all((value<10 and value>-10)  for value in grid):
+        result = {'status':'error: invalid grid'}
+        
     cell = str(parms['cell'])
     for i in range(1, 10):
         parms = {'op':'insert', 'cell':cell, 'value':str(i), 'grid':grid, 'integrity':calculateHash.getEightCharactersOfHash(calculateHash.calculateHash(grid))}
