@@ -1,5 +1,15 @@
+import dodoku.insert as insert
+import dodoku.calculateHash as calculateHash
+ 
 def _recommend(parms):
-    status = 'ok'
-    recommendation = [2,3,5,7,8]
-    result = {"recommendation":recommendation, "status":status}
+    recommend = []
+    status = "ok"
+    grid = parms['grid']
+    cell = str(parms['cell'])
+    for i in range(1, 10):
+        parms = {'op':'insert', 'cell':cell, 'value':str(i), 'grid':grid, 'integrity':calculateHash.getEightCharactersOfHash(calculateHash.calculateHash(grid))}
+        if parms['status'] == 'ok':
+            recommend.append(int(i))
+    
+    result = {"recommendation":recommend, "status":status}
     return result
