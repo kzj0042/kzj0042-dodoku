@@ -6,7 +6,7 @@ def _recommend(parms):
     status = "ok"
     grid = parms['grid']
     if len(grid)!=153:
-        result = {'status':'invalid grid'}
+        result = {'status':'error: invalid grid'}
         return result
     cell = str(parms['cell'])
     
