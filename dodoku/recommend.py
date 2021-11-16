@@ -11,9 +11,13 @@ def _recommend(parms):
     elif 'integrity' not in parms:
         result = {'status':'error: invalid integrity'}
         return result
+    
     recommend = []
+    
     status = "ok"
+    
     grid = parms['grid']
+    
     if not isinstance(grid, list):
         grid = grid.replace('[', '')
         grid = grid.replace(']', '')
@@ -23,9 +27,11 @@ def _recommend(parms):
         except ValueError:
             result = {'status':'error: invalid grid'}
             return result 
+    
     if len(grid)!=153:
         result = {'status':'error: invalid grid'}
         return result
+    
     cell = str(parms['cell'])
     
     if "'" in parms['integrity']:
