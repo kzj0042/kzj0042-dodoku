@@ -1,7 +1,10 @@
 import dodoku.insert as insert
 import dodoku.calculateHash as calculateHash
  
-def _recommend(parms): 
+def _recommend(parms):
+    if 'cell' not in parms:
+        result = {'status':'error: invalid cell'}
+        return result 
     recommend = []
     status = "ok"
     grid = parms['grid']
