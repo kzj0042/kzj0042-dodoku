@@ -5,6 +5,9 @@ def _recommend(parms):
     if 'cell' not in parms:
         result = {'status':'error: invalid cell'}
         return result 
+    elif 'grid' not in parms:
+        result = {'status':'error: invalid grid'}
+        return result
     recommend = []
     status = "ok"
     grid = parms['grid']
