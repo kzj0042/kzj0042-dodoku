@@ -14,6 +14,15 @@ def _recommend(parms):
     recommend = []
     status = "ok"
     grid = parms['grid']
+    if not isinstance(grid, list):
+        grid = grid.replace('[', '')
+        grid = grid.replace(']', '')
+        grid = grid.split(',')
+        try:
+            grid = list(map(int, grid))
+        except ValueError:
+            result = {'status':'error: invalid grid'}
+            return result 
     if len(grid)!=153:
         result = {'status':'error: invalid grid'}
         return result
