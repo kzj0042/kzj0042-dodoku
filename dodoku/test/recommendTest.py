@@ -72,7 +72,7 @@ class RecommendTest(TestCase):
             actualStatus = {'status':actualResult['status']}
             self.assertDictEqual(expectedStatus, actualStatus)
             
-        def test_102_ShouldReturnErrorInvalidGridLength(self):
+        def test_102_ShouldReturnErrorGridTooSmall(self):
             grid = [-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]
             parms = {'op':'recommend', 'cell':'r1c1',  'grid':grid, 'integrity':'abcd1234'}
             actualResult = recommend._recommend(parms)
@@ -197,5 +197,13 @@ class RecommendTest(TestCase):
             actualResult = recommend._recommend(parms)
             expectedResult = 'error: missing cell reference' 
             actualStatus = actualResult['status']
-            self.assertEqual(expectedResult, actualStatus)                
+            self.assertEqual(expectedResult, actualStatus)          
+
+        def test_117_ShouldReturnErrorGridTooLarge(self):
+            grid = [0,0,-2,0,0,-1,0,0,-4,0,-8,0,-1,-9,0,0,0,0,-5,0,0,0,0,-3,0,0,-1,0,0,-3,0,0,0,0,-4,0,-6,-5,0,-9,0,0,0,0,0,-7,0,0,0,0,0,0,-2,-8,0,-2,0,0,-6,0,0,0,0,0,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]
+            parms = {'op':'recommend', 'cell':'r1c1',  'grid':grid, 'integrity':'abcd1234'}
+            actualResult = recommend._recommend(parms)
+            expectedStatus = {"status":"error: invalid grid"}
+            actualStatus = {'status':actualResult['status']}
+            self.assertDictEqual(expectedStatus, actualStatus)  
         
