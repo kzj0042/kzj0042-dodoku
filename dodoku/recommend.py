@@ -1,3 +1,3 @@
 def _recommend(parms):
-    result = {"grid":parms['grid'], "status":"ok"}
+    result = {"recommendation":[], "status":"ok"}
     return result
