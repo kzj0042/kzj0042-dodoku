@@ -8,9 +8,9 @@ def _recommend(parms):
     cell = str(parms['cell'])
     for i in range(1, 10):
         parms = {'op':'insert', 'cell':cell, 'value':str(i), 'grid':grid, 'integrity':calculateHash.getEightCharactersOfHash(calculateHash.calculateHash(grid))}
+        parms = insert(parms)
         if parms['status'] == 'ok':
             recommend.append(int(i))
     
-    print(recommend)
     result = {"recommendation":recommend, "status":status}
     return result
