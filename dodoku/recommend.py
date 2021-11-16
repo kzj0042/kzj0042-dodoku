@@ -5,10 +5,6 @@ def _recommend(parms):
     recommend = []
     status = "ok"
     grid = parms['grid']
-    if len(grid)!=153:
-        result = {'status':'invalid grid'}
-        return result
-    
     cell = str(parms['cell'])
     
     for i in range(1, 10):
