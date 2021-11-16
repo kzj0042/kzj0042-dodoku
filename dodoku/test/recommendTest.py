@@ -272,7 +272,7 @@ class RecommendTest(TestCase):
                     -2,0,0,-6,0,0,0,0,3,0,-1,-4,0,-6,0,0,0,-6,0,0,-3,0,0,0,-2,0,0,-1,0,-9,0,-4,0,-5,-7,0,0,0,0,0,0,-7,0,0,-5,0,0,-6,0,0,0,0,-9,0,-2,0,0,0,0,0,-4,0,-8,-7,0,-9,0,0,0,0,0,0,0,-5,0,0,-9,0,0,0,0,-4,0,0,-6,0,-3,-9,0,0,0,-6,0,0,-5,0,0,-3,-1]     
             parms = {'op':'recommend', 'cell':'c5r5', 'grid':grid, 'integrity':calculteHash.getEightCharactersOfHash(calculteHash.calculateHash(grid))}      
             actualResult = recommend._recommend(parms)
-            expectedResult = 'error: invalid cell reference' 
+            expectedResult = 'error: missing cell reference' 
             actualStatus = actualResult['status']
             self.assertEqual(expectedResult, actualStatus)            
         
