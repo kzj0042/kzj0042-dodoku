@@ -8,6 +8,9 @@ def _recommend(parms):
     elif 'grid' not in parms:
         result = {'status':'error: invalid grid'}
         return result
+    elif 'integrity' not in parms:
+        result = {'status':'error: invalid integrity'}
+        return result
     recommend = []
     status = "ok"
     grid = parms['grid']
