@@ -61,8 +61,6 @@ class RecommendTest(TestCase):
             parms = {'op':'recommend', 'cell':'r1c10',  'grid':grid, 'integrity':calculteHash.getEightCharactersOfHash(calculteHash.calculateHash(grid))}
             actualResult = recommend._recommend(parms)
             expectedStatus = {"status":"error: invalid cell"}
-            expectedRecommendation = {"recommendation":[]}
             actualStatus = {'status':actualResult['status']}
-            actualRecommendation = {'recommendation':actualResult['recommendation']}
             self.assertDictEqual(expectedStatus, actualStatus)
                
