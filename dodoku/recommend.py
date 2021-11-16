@@ -19,8 +19,13 @@ def _recommend(parms):
         return result
     cell = str(parms['cell'])
     
+    if "'" in parms['integrity']:
+        integrity = parms['integrity'].replace("'", "")
+    else:
+        integrity = parms['integrity'].replace('"', '')
+    
     for i in range(1, 10):
-        parms = {'op':'insert', 'cell':cell, 'value':str(i), 'grid':grid, 'integrity':parms['integrity']}
+        parms = {'op':'insert', 'cell':cell, 'value':str(i), 'grid':grid, 'integrity':integrity}
         parms = insert._insert(parms)
         if parms['status'] == 'ok':
             recommend.append(int(i))
