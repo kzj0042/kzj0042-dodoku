@@ -11,5 +11,6 @@ def _recommend(parms):
         if parms['status'] == 'ok':
             recommend.append(int(i))
     
+    print(recommend)
     result = {"recommendation":recommend, "status":status}
     return result
