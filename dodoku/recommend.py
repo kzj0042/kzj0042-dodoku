@@ -5,6 +5,7 @@ def _recommend(parms):
     recommend = []
     status = "ok"
     grid = parms['grid']
+    print(len(grid))
     cell = str(parms['cell'])
     
     for i in range(1, 10):
