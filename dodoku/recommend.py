@@ -19,7 +19,8 @@ def _recommend(parms):
         return result
     cell = str(parms['cell'])
     
-    if "'" in parms['integrity']:
+    integrity = str(parms['integrity'])
+    if "'" in integrity:
         integrity = parms['integrity'].replace("'", "")
     else:
         integrity = parms['integrity'].replace('"', '')
