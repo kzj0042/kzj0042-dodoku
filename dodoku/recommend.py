@@ -2,10 +2,11 @@ import dodoku.insert as insert
 import dodoku.calculateHash as calculateHash
  
 def _recommend(parms): 
+    print(len(parms['grid']))
+
     recommend = []
     status = "ok"
     grid = parms['grid']
-    print(len(grid))
     cell = str(parms['cell'])
     
     for i in range(1, 10):
